@@ -22,3 +22,12 @@ Rohclips liegen nur lokal in `material/clips/` (gitignored, Pixabay verbietet di
 | 209759 | Starkregen auf nächtlicher Straße | https://pixabay.com/videos/id-209759/ |
 | 348898 | Bauarbeiter mit Helm und Warnweste (zweite Einstellung) | https://pixabay.com/videos/id-348898/ |
 | 149927 | Nasse Straße bei Nacht (hochkant) | https://pixabay.com/videos/id-149927/ |
+| 267 | Dampfender Kochtopf | https://pixabay.com/videos/id-267/ |
+| 5629 | Spülen unter dem Wasserhahn | https://pixabay.com/videos/id-5629/ |
+| 14419 | Fleisch auf dem Schneidbrett | https://pixabay.com/videos/id-14419/ |
+| 42701 | Hand auf einem Bauplan | https://pixabay.com/videos/id-42701/ |
+| 52888 | Baugrube mit Bagger | https://pixabay.com/videos/id-52888/ |
+| 85350 | Bauarbeiter mit Schaufel | https://pixabay.com/videos/id-85350/ |
+| 2333 | Hochdruckreinigung einer Straße | https://pixabay.com/videos/id-2333/ |
+| 4593 | Rohrauslauf in einen Graben | https://pixabay.com/videos/id-4593/ |
+| 46216 | Straße mit Verkehr am Tag | https://pixabay.com/videos/id-46216/ |
