@@ -249,6 +249,26 @@ const REELS = {
     { bild: await endkarte('Generalinspektion<br>im Browser.', { unter: 'kostenlos für Einzelanwender · Teams im Abo' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Für Einzelanwender kostenlos. Link in der Bio.' },
   ]; },
+  // AbscheiderBlick mit echten Videoclips (Pixabay, IDs in material/fotos/LIZENZEN.md) und Sprecher
+  abscheiderclip: async () => { TH = THEMEN.abscheiderblick; return [
+    { clip: 159708, dauer: 3, opt: { quer: 0.62, zoom: 0.0005 }, text: await png('ac1.png', text('Tankstelle, 22 Uhr', 'Was hier abläuft …')), ueber: 'fadeblack',
+      sprich: 'Was an der Tankstelle abläuft, landet im Abscheider.' },
+    { clip: 72025, dauer: 3, opt: { start: 2, quer: 0.5, zoom: 0.0006 }, text: await png('ac2.png', text('Großküche', 'Und das Fett?')), ueber: 'smoothleft',
+      sprich: 'In der Großküche ist es das Fett.' },
+    { clip: 348897, dauer: 3, opt: { start: 3, quer: 0.72, zoom: 0.0004 }, text: await png('ac3.png', text('Alle fünf Jahre', 'General&shy;inspektion.')), ueber: 'fadeblack',
+      sprich: 'Alle fünf Jahre muss die Anlage zur Generalinspektion.' },
+    { bild: await handyBild('ac4.png', 'material/screens/abscheiderblick-bemessung.jpg'), dauer: 3, zoom: 0.0006, ueber: 'smoothleft',
+      text: await png('ac4t.png', oben('AbscheiderBlick', 'Bemessung<br>mit Rechenweg.', 'Nenngröße und Schlammfang')),
+      sprich: 'Abscheiderblick rechnet die Bemessung mit nachvollziehbarem Rechenweg.' },
+    { bild: await handyBild('ac5.png', 'material/screens/abscheiderblick-ergebnis.jpg'), dauer: 3, zoom: 0.0006, ueber: 'smoothleft',
+      text: await png('ac5t.png', oben('Mängel', 'Nach BFR-Muster<br>bewertet.', 'mit Frist für die Nachprüfung')),
+      sprich: 'Mängel bewertest du nach dem BFR-Muster, mit Frist für die Nachprüfung.' },
+    { bild: await handyBild('ac6.png', 'material/screens/abscheiderblick-pruefung.jpg'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
+      text: await png('ac6t.png', oben('Abschluss', 'PDF-Prüfbericht.', 'mit Fotos und Nachweisen')),
+      sprich: 'Am Ende steht der Prüfbericht als PDF.' },
+    { bild: await endkarte('Generalinspektion<br>im Browser.', { unter: 'kostenlos für Einzelanwender · Teams im Abo' }), dauer: 3.5, zoom: 0.0004,
+      sprich: 'Für Einzelanwender kostenlos. Link in der Bio.' },
+  ]; },
 };
 if (!REELS[NAME]) throw new Error(`Unbekanntes Reel „${NAME}“ (${Object.keys(REELS).join(', ')})`);
 const SZENEN = await REELS[NAME]();
@@ -284,7 +304,17 @@ function bildSzene(bild, dauer, out, zoom = 0.0009) {
     `scale=2160:3840,zoompan=z='1+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=${n}:s=${W}x${H}:fps=${FPS},vignette=PI/5,noise=alls=5:allf=t+u,format=yuv420p`,
     '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
 }
-SZENEN.forEach((z, i) => z.foto ? fotoSzene(z.foto, z.dauer, `s${i}.mp4`, z.opt) : bildSzene(z.bild, z.dauer, `s${i}.mp4`, z.zoom));
+// Echte Videoclips (Pixabay-ID aus material/clips/, siehe werkzeuge/pixabay.mjs): hochkant ausschneiden (quer 0…1),
+// langsam hineinfahren, gleicher Farblook und Korn wie die Fotos; kurze Clips laufen in Schleife, Ton wird verworfen.
+function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1 } = {}) {
+  const n = Math.round(dauer * FPS);
+  const datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
+  ff(['-stream_loop', '-1', '-ss', String(start), '-i', datei, '-frames:v', String(n), '-an', '-vf',
+    `setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK},${KORN},format=yuv420p`,
+    '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
+}
+SZENEN.forEach((z, i) => z.clip !== undefined ? clipSzene(z.clip, z.dauer, `s${i}.mp4`, z.opt)
+  : z.foto ? fotoSzene(z.foto, z.dauer, `s${i}.mp4`, z.opt) : bildSzene(z.bild, z.dauer, `s${i}.mp4`, z.zoom));
 
 // ---- Schnitt: weiche Überblendungen, Texte mit Einblendung und leichtem Hochgleiten
 const X = 0.5; // Überblenddauer

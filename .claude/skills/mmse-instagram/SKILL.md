@@ -49,7 +49,7 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 
 ## Echtes Material: Quellen und Lizenzen
 
-- **Erlaubt:** eigene Fotos/Clips von Manuel (Freigabe, Metadaten entfernen, Schilder/Kennzeichen unkenntlich), **Pixabay** (Videos und Fotos, Lizenz erlaubt Werbung mit Bearbeitung ohne Namensnennung; API `https://pixabay.com/api/videos/?key=$PIXABAY_KEY&q=…&lang=de`), **CC0/gemeinfrei** von Wikimedia Commons (Suche `… incategory:"CC-zero"`, eigener User-Agent, Ratenlimit → Pausen).
+- **Erlaubt:** eigene Fotos/Clips von Manuel (Freigabe, Metadaten entfernen, Schilder/Kennzeichen unkenntlich), **Pixabay** (Videos und Fotos, Lizenz erlaubt Werbung mit Bearbeitung ohne Namensnennung; Werkzeug `werkzeuge/pixabay.mjs`, Schlüssel aus dem Umgebungs-Secret `PIXABAY_KEY`; Clips mit Tag „ai generated“ nicht verwenden), **CC0/gemeinfrei** von Wikimedia Commons (Suche `… incategory:"CC-zero"`, eigener User-Agent, Ratenlimit → Pausen).
 - **Nicht:** Google-Bildersuche, Hersteller- und Firmenfotos, CC BY-SA in bearbeiteter Werbung, Bot-Schutz von Stock-Seiten umgehen. Pexels vergibt derzeit keine API-Schlüssel.
 - Jede Fremddatei nach `material/fotos/` bzw. `material/clips/` mit Quelle und Lizenz in `material/fotos/LIZENZEN.md`.
 - Pixabay-Suchbegriffe, die passen: tankstelle / gas station, zapfsäule, großküche / restaurant kitchen, koch, kanal / sewer, gully / manhole, bauarbeiter / construction worker, straßenbau, saugwagen / vacuum truck, baustelle nacht, regen straße nacht, tablet arbeiter, büro planung.
@@ -57,7 +57,8 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 ## Werkzeuge (in diesem Repo)
 
 - `node werkzeuge/make-reel.mjs <name>` → `reels/reel-<name>.mp4` + `-cover.jpg`. Vorhandene Reels: `mmse`, `schachtblick`, `abscheiderfoto`, `abscheiderblick`, `abscheider3d`, `spuelblick`, `cinematic`, `aufmass`, `export`, `werbung`. Neue Reels als weiteren Eintrag in `REELS` anlegen.
-- Szene: `{ foto | bild, dauer, opt: { zoom, z0, drift, dreh, quer }, text, textSzenen, ueber, sprich }`. `foto` = Pfad im Repo (`material/fotos/…`) oder Name aus `material/schachtblick/demo/`; Querformat mit `opt.quer` (0…1 = Ausschnitt). Helfer: `text()`, `oben()`, `handyBild()`, `tabletBild()`, `karte()`, `endkarte()`.
+- **Videoclips (bevorzugt für den Einstieg):** `PIXABAY_KEY=… node werkzeuge/pixabay.mjs --suche "gas station"` (KI-Clips werden ausgefiltert), dann `node werkzeuge/pixabay.mjs <ID> …` lädt nach `material/clips/<ID>.mp4`. Clips nie committen (gitignored, Pixabay verbietet die Weitergabe der Rohdateien); ID, Inhalt und Link in `material/fotos/LIZENZEN.md` eintragen. Szene `{ clip: <ID>, dauer, opt: { start, quer, zoom, tempo } }`. Beispiel-Reel: `abscheiderclip`.
+- Szene: `{ clip | foto | bild, dauer, opt: { zoom, z0, drift, dreh, quer }, text, textSzenen, ueber, sprich }`. `foto` = Pfad im Repo (`material/fotos/…`) oder Name aus `material/schachtblick/demo/`; Querformat mit `opt.quer` (0…1 = Ausschnitt). Helfer: `text()`, `oben()`, `handyBild()`, `tabletBild()`, `karte()`, `endkarte()`.
 - **Sprecher:** `sprich` wird mit piper vertont (Stimme Thorsten, frei). `PIPER_BIN=<venv>/bin/piper`, Modell `.cache/piper/de_DE-thorsten-high.onnx`. Fehlt beides: `python3 -m venv /tmp/tts && /tmp/tts/bin/pip install piper-tts` und das Modell von huggingface `rhasspy/piper-voices` (de_DE/thorsten/high, `.onnx` + `.onnx.json`) nach `.cache/piper/` laden. Aussprache: „M M S E“, „3 D“, „Isybau“, „Spülblick“, „Abscheiderblick“.
 - `node werkzeuge/make-instagram.mjs [start|ki|kommune|kw44]` → Karussells/Storys nach `posts/instagram/`.
 - Vor dem Ausliefern immer Einzelbilder ansehen (`ffmpeg -ss <t> -frames:v 1`): Umbrüche, abgeschnittene Texte, Überlappungen.
