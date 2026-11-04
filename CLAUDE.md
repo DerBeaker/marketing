@@ -5,7 +5,7 @@ Dieses Repo ist der Arbeitsort für **Instagram und Social Media** von MMSE Soft
 ## Feste Vereinbarungen mit Manuel
 
 - Mit Manuel Deutsch sprechen.
-- **Diese Sitzungen machen ausschließlich Social Media.** Zuerst den Skill `.claude/skills/mmse-instagram` laden (Schachtblick-Details: `.claude/skills/schachtblick-instagram`). Die gleichnamigen Skills im App-Repo und im claude.ai-Konto sind veraltet und gelten nicht.
+- **Diese Sitzungen machen ausschließlich Social Media.** Zuerst den Skill `.claude/skills/mmse-instagram` laden (Schachtblick-Details: `.claude/skills/schachtblick-instagram`). Die gleichnamigen Skills im App-Repo sind nur noch Verweise hierher (der alte Konto-Skill auf claude.ai ist seit 04.11.2026 gelöscht).
 - **App-Repos nur lesen** (`DerBeaker/Schachtinspektions-Tool`, `gi-tool`, `abscheider-3d-tool`, `spuelblick`, `homepagemmse`): per `add_repo` mit `access: read`, nur für Fakten, Screens und lokale Demo-Server. Dort nie committen, pushen oder ZIPs bauen. Nötige App-Änderungen als Auftrag an die App-Sitzung (`send_message`) oder an Manuel; offene Aufträge in `UEBERGABE-APPS.md`. Einzige Ausnahme: Manuel startet eine Sitzung ausdrücklich mit dem App-Repo, damit Doku nachgezogen wird (wie am 04.11.2026) – dann nur `CLAUDE.md` und `.claude/skills/` dort ändern, nie `app/`, und die Regeln des App-Repos (Push auch auf dessen Default-Branch) befolgen.
 - **Immer direkt veröffentlichen** (Metricool `autoPublish: true`, `draft: false`), nie Entwürfe. Manuel lädt nichts selbst hoch. Die Metricool-Werkzeuge sind in `.claude/settings.json` ohne Rückfrage freigegeben.
 - **Monatslimit Metricool (Gratis-Tarif, ca. 20 Beiträge):** höchstens 18 pro Monat planen.
