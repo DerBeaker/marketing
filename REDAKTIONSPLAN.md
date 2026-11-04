@@ -24,30 +24,26 @@ Ziel: fotorealistisch, echte Menschen, Tankstellen, Großküchen, Abscheider, Sp
 
 ## Rhythmus
 
-Pro Woche 3 Reels mit Sprecher (Thorsten), 1 Story, höchstens 1 Karussell. Apps rotieren, Schachtblick mindestens einmal pro Woche. Veröffentlicht wird immer direkt (`autoPublish: true`, `draft: false`).
+Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). Überwiegend Reels mit Sprecher und echten Clips; Veröffentlichung immer direkt.
 
 ## November 2026
 
 | Tag | Zeit | Format | App | Inhalt | Datei | Status |
 |---|---|---|---|---|---|---|
-| Mi 04.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Echte Videoclips (Tankstelle nachts, Fritteuse, Arbeiter) → Generalinspektion | reel-abscheiderclip.mp4 | eingeplant |
-| Do 05.11. | 18:00 | Reel + Sprecher | Schachtblick | „Der erste Schacht“, vertont | reel-schachtblick.mp4 | eingeplant |
-| Sa 07.11. | 10:00 | Reel + Sprecher | Schachtblick | mit echten Videoclips (Straße, Regen, Gully, Arbeiter) | – | wird produziert |
-| Mo 09.11. | 18:00 | Reel + Sprecher | MMSE | „Aus Schachtblick wird MMSE Software“, alle Apps | reel-mmse.mp4 | eingeplant (vorher umbenennen) |
-| Di 10.11. | 18:00 | Story | Schachtblick | „Wo liegen deine Daten?“ (nachgeholt vom 30.10.) | – | eingeplant |
-| Mi 11.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Aufmaß → 3D-Modell → Dichtheit → PDF | reel-abscheider3d.mp4 | eingeplant |
-| Fr 13.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (nachgeholt vom 31.10.) | – | eingeplant |
+| Mi 04.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Echte Clips (Tankstelle nachts, Fritteuse, Arbeiter) → Generalinspektion | reel-abscheiderclip.mp4 | eingeplant |
+| Sa 07.11. | 10:00 | Reel + Sprecher | Schachtblick | Echte Clips (Regen, Straßenablauf, Arbeiter) + Schachtfoto → App | reel-schachtblickclip.mp4 | eingeplant |
+| Mo 09.11. | 18:00 | Reel + Sprecher | MMSE | „Aus Schachtblick wird MMSE Software“, alle Apps | reel-mmse.mp4 | eingeplant |
+| Mi 11.11. | 18:00 | Reel + Sprecher | Abscheider 3D | 3D-Modell, Schnitt, Draufsicht, Dichtheit | reel-abscheider3d.mp4 | eingeplant |
 | Sa 14.11. | 10:00 | Reel + Sprecher | SpülBlick | Vorstellung, „Interesse? Schreib uns.“ | reel-spuelblick.mp4 | eingeplant |
-| Mo 16.11. | 18:00 | Reel | Schachtblick | „Kode wählen statt Handbuch wälzen“ (verschoben vom 04.11.) | – | eingeplant |
-| Mi 18.11. | 18:00 | Karussell | MMSE | „Vier Apps, ein Account“ (eine Folie je App) | – | wird produziert |
-| Fr 20.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Mängel nach BFR-Muster und Fristen | – | wird produziert |
-| Sa 21.11. | 10:00 | Story | MMSE | Umfrage „Welche App interessiert dich?“ (Sticker von Hand) | – | wird produziert |
-| Mo 23.11. | 18:00 | Reel + Sprecher | Schachtblick | Ergebnis abgeben: XML + Fotos als ZIP (Pro) | reel-export | wird produziert |
-| Mi 25.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Dichtheitsprüfung nach Anhang A | – | wird produziert |
-| Fr 27.11. | 18:00 | Reel + Sprecher | SpülBlick | Funkloch: Karte und Haltungen bleiben da | – | wird produziert |
-| Sa 28.11. | 10:00 | Story | Schachtblick | Laser per Bluetooth (Frage: welcher Laser?) | – | wird produziert |
+| Mo 16.11. | 18:00 | Reel + Sprecher | Schachtblick | „Der erste Schacht“, vertont | reel-schachtblick.mp4 | eingeplant |
+| Mi 18.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (nachgeholt) | – | eingeplant |
+| Sa 21.11. | 10:00 | Story | Schachtblick | „Wo liegen deine Daten?“ | – | eingeplant |
+| Mo 23.11. | 18:00 | Reel + Sprecher | AbscheiderBlick / Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
+| Mi 25.11. | 18:00 | Reel | Schachtblick | „Kode wählen statt Handbuch wälzen“ (alt, KI-Szenen) – darf die Automatik durch einen Clip-Reel ersetzen | – | eingeplant |
+| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder Schachtblick | neu | – | Automatik |
+| Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik |
 
-16 Beiträge im November (Limit-Reserve: 2). KW 47/48 baue ich jeweils in der Vorwoche und schaue vorher in die Analytics.
+12 Beiträge im November (Limit ca. 20).
 
 ## Reels erzeugen
 

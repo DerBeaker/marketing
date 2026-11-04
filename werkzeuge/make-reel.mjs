@@ -269,6 +269,25 @@ const REELS = {
     { bild: await endkarte('Generalinspektion<br>im Browser.', { unter: 'kostenlos für Einzelanwender · Teams im Abo' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Für Einzelanwender kostenlos. Link in der Bio.' },
   ]; },
+  // Schachtblick mit echten Videoclips (Pixabay) + echtem Schachtfoto und Sprecher
+  schachtblickclip: async () => { TH = THEMEN.schachtblick; return [
+    { clip: 209759, dauer: 3, opt: { start: 1, quer: 0.5, zoom: 0.0006 }, text: await png('sc1.png', text('Montag, 5:40 Uhr', 'Regen.<br>Erster Schacht.')), ueber: 'fadeblack',
+      sprich: 'Montag, fünf Uhr vierzig. Regen. Der erste Schacht.' },
+    { clip: 9059, dauer: 3, opt: { start: 1, quer: 0.55, zoom: 0.0008 }, text: await png('sc2.png', text('Kanalnetz', 'Hier läuft<br>alles zusammen.')), ueber: 'smoothleft',
+      sprich: 'Unter der Straße läuft alles zusammen.' },
+    { clip: 348898, dauer: 3, opt: { start: 4, quer: 0.4, zoom: 0.0004 }, text: await png('sc3.png', text('Vor Ort', 'Ohne<br>Klemmbrett.')), ueber: 'fadeblack',
+      sprich: 'Du dokumentierst direkt am Schacht. Ohne Klemmbrett.' },
+    { foto: 'schacht-4.jpg', dauer: 3, opt: { zoom: 0.0012 }, text: await png('sc4.png', text('Foto von oben', 'Anschlüsse<br>antippen.')), ueber: 'smoothleft',
+      sprich: 'Ein Foto von oben, die Anschlüsse tippst du im Bild an.' },
+    { bild: await handyBild('sc5.png', 'app-befunde.jpg'), dauer: 3, ueber: 'smoothleft',
+      text: await png('sc5t.png', oben('Kodierung', 'Schäden<br>kodieren.', 'nach DIN EN 13508-2')),
+      sprich: 'Schäden kodierst du nach Katalog, mit Plausibilitätsprüfung.' },
+    { bild: await handyBild('sc6.png', 'app-befunde.jpg'), dauer: 3, zoom: 0.0016, ueber: 'fadeblack',
+      text: await png('sc6t.png', oben('Bewertung', 'Zustandsklasse.', 'nach BFR Abwasser, direkt am Schacht')),
+      sprich: 'Die Zustandsklasse siehst du sofort.' },
+    { bild: await endkarte('Schachtinspektion<br>im Browser.'), dauer: 3.5, zoom: 0.0004,
+      sprich: 'Schachtblick. Kostenlos im Browser. Link in der Bio.' },
+  ]; },
 };
 if (!REELS[NAME]) throw new Error(`Unbekanntes Reel „${NAME}“ (${Object.keys(REELS).join(', ')})`);
 const SZENEN = await REELS[NAME]();

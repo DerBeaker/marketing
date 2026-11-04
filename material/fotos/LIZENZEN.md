@@ -19,3 +19,6 @@ Rohclips liegen nur lokal in `material/clips/` (gitignored, Pixabay verbietet di
 | 20283 | Regenwasser läuft in einen Ablauf | https://pixabay.com/videos/id-20283/ |
 | 318785 | heißes Öl in der Pfanne | https://pixabay.com/videos/id-318785/ |
 | 9059 | Straßenablauf im Regen | https://pixabay.com/videos/id-9059/ |
+| 209759 | Starkregen auf nächtlicher Straße | https://pixabay.com/videos/id-209759/ |
+| 348898 | Bauarbeiter mit Helm und Warnweste (zweite Einstellung) | https://pixabay.com/videos/id-348898/ |
+| 149927 | Nasse Straße bei Nacht (hochkant) | https://pixabay.com/videos/id-149927/ |
