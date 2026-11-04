@@ -74,7 +74,7 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 
 ## Rhythmus und Rotation
 
-Manuel (04.11.2026): **alle 2–3 Tage ein Beitrag reicht** – Montag 18:00, Mittwoch 18:00, Samstag 10:00, nicht mehr. Überwiegend Reels mit Sprecher, höchstens 1 Story oder Karussell pro Woche anstelle eines Reels. Rotation: Abscheider-Apps und Schachtblick abwechselnd, alle 2 Wochen SpülBlick. Jede Woche vorher Analytics (Reels: Reichweite, Aufrufe, Wiedergabezeit; Follower) ansehen und `REDAKTIONSPLAN.md` fortschreiben.
+Manuel (04.11.2026): **alle 2–3 Tage ein Beitrag reicht** – Montag 18:00, Mittwoch 18:00, Samstag 10:00, nicht mehr. Überwiegend Reels mit Sprecher, höchstens 1 Story oder Karussell pro Woche anstelle eines Reels. Rotation: **nicht Schachtblick-lastig** (Manuel, 04.11.2026) – Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick. Jede Woche vorher Analytics (Reels: Reichweite, Aufrufe, Wiedergabezeit; Follower) ansehen und `REDAKTIONSPLAN.md` fortschreiben.
 
 ## Hashtags
 

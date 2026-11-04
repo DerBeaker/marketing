@@ -35,15 +35,17 @@ Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). 
 | Mo 09.11. | 18:00 | Reel + Sprecher | MMSE | „Aus Schachtblick wird MMSE Software“, alle Apps | reel-mmse.mp4 | eingeplant |
 | Mi 11.11. | 18:00 | Reel + Sprecher | Abscheider 3D | 3D-Modell, Schnitt, Draufsicht, Dichtheit | reel-abscheider3d.mp4 | eingeplant |
 | Sa 14.11. | 10:00 | Reel + Sprecher | SpülBlick | Vorstellung, „Interesse? Schreib uns.“ | reel-spuelblick.mp4 | eingeplant |
-| Mo 16.11. | 18:00 | Reel + Sprecher | Schachtblick | „Der erste Schacht“, vertont | reel-schachtblick.mp4 | eingeplant |
-| Mi 18.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (nachgeholt) | – | eingeplant |
-| Sa 21.11. | 10:00 | Story | Schachtblick | „Wo liegen deine Daten?“ | – | eingeplant |
-| Mo 23.11. | 18:00 | Reel + Sprecher | AbscheiderBlick / Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
-| Mi 25.11. | 18:00 | Reel | Schachtblick | „Kode wählen statt Handbuch wälzen“ (alt, KI-Szenen) – darf die Automatik durch einen Clip-Reel ersetzen | – | eingeplant |
-| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder Schachtblick | neu | – | Automatik |
+| Mo 16.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Teil 2: Großküche, Mängel mit Frist, Nachweise, Erinnerung | reel-abscheiderblick2.mp4 | eingeplant |
+| Mi 18.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Baugrube, Bauplan, Arbeiter → 3D-Modell, Schnitt, Dichtheit | reel-abscheider3dclip.mp4 | eingeplant |
+| Sa 21.11. | 10:00 | Reel + Sprecher | SpülBlick | Straße, Hochdruck, Rohrauslauf → Karte, Erfassung | reel-spuelblickclip.mp4 | eingeplant |
+| Mo 23.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo | – | eingeplant |
+| Mi 25.11. | 18:00 | Reel + Sprecher | AbscheiderBlick oder Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
+| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik |
 | Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik |
 
-12 Beiträge im November (Limit ca. 20).
+Gewichtung (Manuel, 04.11.2026): **nicht Schachtblick-lastig** – die letzten Wochen liefen fast nur Schachtblick. Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick.
+
+11 Beiträge im November (Limit ca. 20).
 
 ## Reels erzeugen
 
