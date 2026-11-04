@@ -30,9 +30,9 @@ Pro Woche 3 Reels mit Sprecher (Thorsten), 1 Story, höchstens 1 Karussell. Apps
 
 | Tag | Zeit | Format | App | Inhalt | Datei | Status |
 |---|---|---|---|---|---|---|
-| Mi 04.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Echte Fotos (Zapfsäule, Großküche) → Generalinspektion | reel-abscheiderfoto.mp4 | eingeplant |
+| Mi 04.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Echte Videoclips (Tankstelle nachts, Fritteuse, Arbeiter) → Generalinspektion | reel-abscheiderclip.mp4 | eingeplant |
 | Do 05.11. | 18:00 | Reel + Sprecher | Schachtblick | „Der erste Schacht“, vertont | reel-schachtblick.mp4 | eingeplant |
-| Sa 07.11. | 10:00 | Reel + Sprecher | AbscheiderBlick / Abscheider 3D | mit echtem Videomaterial (Pixabay), Menschen bei der Arbeit | – | wartet auf Pixabay-Schlüssel |
+| Sa 07.11. | 10:00 | Reel + Sprecher | Schachtblick | mit echten Videoclips (Straße, Regen, Gully, Arbeiter) | – | wird produziert |
 | Mo 09.11. | 18:00 | Reel + Sprecher | MMSE | „Aus Schachtblick wird MMSE Software“, alle Apps | reel-mmse.mp4 | eingeplant (vorher umbenennen) |
 | Di 10.11. | 18:00 | Story | Schachtblick | „Wo liegen deine Daten?“ (nachgeholt vom 30.10.) | – | eingeplant |
 | Mi 11.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Aufmaß → 3D-Modell → Dichtheit → PDF | reel-abscheider3d.mp4 | eingeplant |
