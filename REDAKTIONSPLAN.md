@@ -1,6 +1,6 @@
 # Redaktionsplan MMSE Software (Instagram)
 
-Seit 04.11.2026 ist @schachtblick.app umbenannt in **@mmse.software.moldan**, den Account von **MMSE Software** für alle Apps: Schachtblick, AbscheiderBlick, Abscheider 3D und SpülBlick (nur Vorstellung). Leitfaden: Skill `mmse-instagram` (in diesem Repo). Den alten Plan (Oktober) gibt es in der Git-Historie des App-Repos.
+Seit 04.11.2026 ist @schachtblick.app umbenannt in **@mmse.software.moldan**, den Account von **MMSE Software** für alle Apps: Schachtblick, AbscheiderBlick, Abscheider 3D und SpülBlick (nur Vorstellung). Leitfaden: Skill `mmse-instagram` (in diesem Repo). Den alten Plan (Oktober, nur Schachtblick) gibt es in der Git-Historie des App-Repos (`marketing/REDAKTIONSPLAN.md`); er gilt nicht mehr.
 
 ## Was schiefgelaufen ist (Stand 04.11.2026)
 
@@ -8,15 +8,15 @@ Seit 04.11.2026 ist @schachtblick.app umbenannt in **@mmse.software.moldan**, de
 - **Entwürfe:** Die Beiträge ab 02.11. hatte eine andere Sitzung als Entwurf ohne Auto-Veröffentlichung angelegt (`draft: true`, `autoPublish: false`). Entwürfe erscheinen nie. Außerdem mit „moda.app“-Wasserzeichen und KI-Personen. Diese Entwürfe sind ersetzt bzw. bleiben liegen und sollten in Metricool gelöscht werden.
 - **Domain:** Die Story vom 29.10. zeigte „abscheider.mmse-software.de“. Richtig ist **abscheider.mmse-software.com**.
 
-## Umstellung auf MMSE Software (Manuel, vor Mo 09.11.)
+## Umstellung auf MMSE Software (Stand 04.11.2026)
 
-1. Instagram → Profil bearbeiten: Name „MMSE Software“, Benutzername z. B. `mmse.software` (falls frei), Profilbild `marketing/marken/mmse-profilbild.jpg`.
-2. Bio (Vorschlag):
-   „Apps für Abwasser und Entwässerung · im Browser, auch offline
-   Schachtblick · AbscheiderBlick · Abscheider 3D · SpülBlick
-   Freigericht · www.mmse-software.com“
-   Link: https://www.mmse-software.com/#produkte
-3. Danach Bescheid geben: Ich ändere `INSTAGRAM_URL` in Schachtblick (brand.js, Info-Seite, JSON-LD) und prüfe die Metricool-Verbindung. In SpülBlick und AbscheiderBlick steht der Link ggf. auch, das machst du dort in der jeweiligen Sitzung.
+- Erledigt: Benutzername **@mmse.software.moldan**; Schachtblick 0.9.8 verlinkt ihn (`INSTAGRAM_URL`, Info-Seite, JSON-LD), ZIP an Manuel; Metricool-Verbindung läuft (Beiträge ab 04.11. stehen auf PENDING).
+- Profil (falls noch nicht so): Name „MMSE Software“, Profilbild `marken/mmse-profilbild.jpg`, Bio:
+  „Apps für Abwasser und Entwässerung · im Browser, auch offline
+  Schachtblick · AbscheiderBlick · Abscheider 3D · SpülBlick
+  Freigericht · www.mmse-software.com“
+  Link: https://www.mmse-software.com/#produkte
+- Offen: Instagram-Link in SpülBlick (und optional AbscheiderBlick, Homepage), siehe `UEBERGABE-APPS.md`.
 
 ## Bildmaterial
 
@@ -24,7 +24,7 @@ Ziel: fotorealistisch, echte Menschen, Tankstellen, Großküchen, Abscheider, Sp
 
 ## Rhythmus
 
-Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). Überwiegend Reels mit Sprecher und echten Clips; Veröffentlichung immer direkt.
+Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). Überwiegend Reels mit Sprecher und echten Clips, höchstens 1 Story/Karussell pro Woche; Schachtblick höchstens 1 Beitrag pro Woche; Veröffentlichung immer direkt. Regeln im Detail: Skill `mmse-instagram`, Abschnitt „Rhythmus und Rotation“.
 
 ## November 2026
 
@@ -38,14 +38,14 @@ Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). 
 | Mo 16.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Teil 2: Großküche, Mängel mit Frist, Nachweise, Erinnerung | reel-abscheiderblick2.mp4 | eingeplant |
 | Mi 18.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Baugrube, Bauplan, Arbeiter → 3D-Modell, Schnitt, Dichtheit | reel-abscheider3dclip.mp4 | eingeplant |
 | Sa 21.11. | 10:00 | Reel + Sprecher | SpülBlick | Straße, Hochdruck, Rohrauslauf → Karte, Erfassung | reel-spuelblickclip.mp4 | eingeplant |
-| Mo 23.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo | – | eingeplant |
+| Mo 23.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (von Manuel) | promo-60s.mp4 | eingeplant |
 | Mi 25.11. | 18:00 | Reel + Sprecher | AbscheiderBlick oder Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
-| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik |
-| Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik |
+| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik (So 22.11.) |
+| Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik (So 29.11.) |
 
 Gewichtung (Manuel, 04.11.2026): **nicht Schachtblick-lastig** – die letzten Wochen liefen fast nur Schachtblick. Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick.
 
-11 Beiträge im November (Limit ca. 20).
+12 Termine im November: 9 eingeplant (in Metricool am 04.11. geprüft: alle PENDING, `draft: false`, `autoPublish: true`), 3 für die Automatik. Obergrenze 18.
 
 ## Reels erzeugen
 
@@ -56,8 +56,7 @@ Sprecher: piper, Stimme Thorsten (frei). Reels mit Sprecher bringen ihren Ton mi
 
 ## Automatik
 
-Geplante Aufgabe „MMSE Wochenplanung Instagram“, sonntags 18:48: plant die Folgewoche nach Skill und diesem Plan (3 Reels mit Sprecher, 1 Story, Rotation der Apps, Monatslimit), veröffentlicht direkt und schreibt die Woche hier fort.
-Sprecher: piper, Stimme Thorsten (frei). Reels mit Sprecher bringen ihren Ton mit, in Metricool also keine Musik (`audioConfiguration`) setzen.
+Geplante Aufgabe „MMSE Wochenplanung Instagram“, sonntags 18:48: plant die Folgewoche nach Skill und diesem Plan (3 Termine Mo/Mi/Sa, überwiegend Reels mit Sprecher, höchstens 1 Story/Karussell, Schachtblick höchstens 1 pro Woche, Monatslimit 18), füllt nur freie Termine, veröffentlicht direkt und schreibt die Woche hier fort.
 
 ## Texte
 
@@ -114,7 +113,7 @@ Den Link bei LinkedIn lieber in den **ersten Kommentar** setzen statt in den Tex
 
 ## LinkedIn: so gehst du vor
 
-1. **Profil zuerst (30 min).** Foto, Titelbild (nimm `marketing/kommune-post.jpg` zugeschnitten oder das Schachtblick-Logo), Überschrift statt „Inhaber“: *„Software für die Schachtinspektion (ISYBAU, DWA-M 149) · Schachtblick“*. Im Info-Text 3 Sätze: Problem, Lösung, Link.
+1. **Profil zuerst (30 min).** Foto, Titelbild (nimm `marketing/kommune-post.jpg` aus dem App-Repo zugeschnitten oder das Schachtblick-Logo), Überschrift statt „Inhaber“: *„Software für die Schachtinspektion (ISYBAU, DWA-M 149) · Schachtblick“*. Im Info-Text 3 Sätze: Problem, Lösung, Link.
 2. **Unternehmensseite „MMSE Software Engineering“ anlegen** (kostenlos, unter „Unternehmen erstellen“) und dort Schachtblick vorstellen. Die Beiträge selbst postest du aber **über dein persönliches Profil**. Das erreicht deutlich mehr Leute als eine Firmenseite mit null Followern.
 3. **Vernetzen (10 Anfragen pro Tag, mit Notiz).** Zielgruppe: Leiter Stadtentwässerung, Kanalnetzbetreiber, Tiefbauämter, Abwasserverbände, Inspektionsfirmen, Ingenieurbüros für Kanalsanierung. Notiz zum Beispiel: *„Guten Tag Herr/Frau …, ich entwickle eine App für die Schachtinspektion und würde mich über Ihre Sicht aus der Praxis freuen.“* Keine Werbung in der ersten Nachricht.
 4. **Beiträge:** 1 pro Woche reicht. Karussell als **PDF-Dokument hochladen** (die Seiten sind wischbar und werden oft angeschaut). Kein Link im Beitragstext, sondern im ersten Kommentar. Am Ende eine Frage stellen, damit Antworten kommen.
@@ -124,7 +123,7 @@ Den Link bei LinkedIn lieber in den **ersten Kommentar** setzen statt in den Tex
 
 ## Messen
 
-- **Links mit Herkunft:** Instagram-Bio: `https://schachtblick.mmse-software.com/?utm_source=instagram`, LinkedIn: `…/?utm_source=linkedin`, Direktmails: `…/?utm_source=mail`. Die App trackt nicht (keine Cookies); Zahlen siehst du in den Statistiken von Instagram/LinkedIn und im Server-Log.
+- **Links mit Herkunft:** Instagram-Bio seit 04.11.2026: `https://www.mmse-software.com/#produkte` (alle Apps); Schachtblick-Links in Storys: `https://schachtblick.mmse-software.com/?utm_source=instagram`, LinkedIn: `…/?utm_source=linkedin`, Direktmails: `…/?utm_source=mail`. Die App trackt nicht (keine Cookies); Zahlen siehst du in den Statistiken von Instagram/LinkedIn und im Server-Log.
 - **Wöchentlich (10 min):** Instagram Insights: Reichweite, Speicherungen, Link-Klicks. LinkedIn: Impressionen, neue Kontakte aus der Zielgruppe.
 - **Nach 8 Wochen entscheiden:** Was hat Klicks gebracht? Das Format wiederholen, den Rest streichen. Als Erfolg zählen: 5 echte Rückmeldungen von Inspekteuren, ein Gespräch mit einer Kommune, die ersten Registrierungen.
 

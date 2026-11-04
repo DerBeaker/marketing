@@ -56,8 +56,11 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 
 ## Werkzeuge (in diesem Repo)
 
-- `node werkzeuge/make-reel.mjs <name>` → `reels/reel-<name>.mp4` + `-cover.jpg`. Vorhandene Reels: `mmse`, `schachtblick`, `abscheiderfoto`, `abscheiderblick`, `abscheider3d`, `spuelblick`, `cinematic`, `aufmass`, `export`, `werbung`. Neue Reels als weiteren Eintrag in `REELS` anlegen.
-- **Videoclips (bevorzugt für den Einstieg):** `PIXABAY_KEY=… node werkzeuge/pixabay.mjs --suche "gas station"` (KI-Clips werden ausgefiltert), dann `node werkzeuge/pixabay.mjs <ID> …` lädt nach `material/clips/<ID>.mp4`. Clips nie committen (gitignored, Pixabay verbietet die Weitergabe der Rohdateien); ID, Inhalt und Link in `material/fotos/LIZENZEN.md` eintragen. Szene `{ clip: <ID>, dauer, opt: { start, quer, zoom, tempo } }`. Beispiel-Reel: `abscheiderclip`.
+- `node werkzeuge/make-reel.mjs <name>` → `reels/reel-<name>.mp4` + `-cover.jpg`. Neue Reels als weiteren Eintrag in `REELS` anlegen. Vorhandene Reels (Stand 04.11.2026; welche schon liefen oder eingeplant sind, steht in `REDAKTIONSPLAN.md` – nicht erneut posten):
+  - mit echten Clips + Sprecher (aktueller Standard, Vorbild für neue): `abscheiderclip`, `abscheiderblick2` (AbscheiderBlick), `abscheider3dclip` (Abscheider 3D), `spuelblickclip` (SpülBlick), `schachtblickclip` (Schachtblick)
+  - mit Fotos/Screens + Sprecher: `mmse` (alle Apps), `abscheiderfoto`, `abscheiderblick`, `abscheider3d`, `spuelblick`, `schachtblick`
+  - ältere Schachtblick-Reels ohne Sprecher (stumm, Musik über Metricool): `cinematic`, `aufmass`, `export`, `werbung`; dazu `reels/promo-60s.mp4` (60-s-Werbevideo von Manuel, nicht aus dem Werkzeug)
+- **Videoclips (bevorzugt für den Einstieg):** `PIXABAY_KEY=… node werkzeuge/pixabay.mjs --suche "gas station"` (KI-Clips werden ausgefiltert), dann `node werkzeuge/pixabay.mjs <ID> …` lädt nach `material/clips/<ID>.mp4`. Clips nie committen (gitignored, Pixabay verbietet die Weitergabe der Rohdateien); ID, Inhalt und Link in `material/fotos/LIZENZEN.md` eintragen. Die dort schon gelisteten IDs lassen sich in einer neuen Sitzung mit `node werkzeuge/pixabay.mjs <ID> …` wieder laden (sonst fehlen die Clips beim Rendern). Szene `{ clip: <ID>, dauer, opt: { start, quer, zoom, tempo } }`. Beispiel-Reels: `abscheiderclip`, `schachtblickclip`.
 - Szene: `{ clip | foto | bild, dauer, opt: { zoom, z0, drift, dreh, quer }, text, textSzenen, ueber, sprich }`. `foto` = Pfad im Repo (`material/fotos/…`) oder Name aus `material/schachtblick/demo/`; Querformat mit `opt.quer` (0…1 = Ausschnitt). Helfer: `text()`, `oben()`, `handyBild()`, `tabletBild()`, `karte()`, `endkarte()`.
 - **Sprecher:** `sprich` wird mit piper vertont (Stimme Thorsten, frei). `PIPER_BIN=<venv>/bin/piper`, Modell `.cache/piper/de_DE-thorsten-high.onnx`. Fehlt beides: `python3 -m venv /tmp/tts && /tmp/tts/bin/pip install piper-tts` und das Modell von huggingface `rhasspy/piper-voices` (de_DE/thorsten/high, `.onnx` + `.onnx.json`) nach `.cache/piper/` laden. Aussprache: „M M S E“, „3 D“, „Isybau“, „Spülblick“, „Abscheiderblick“.
 - `node werkzeuge/make-instagram.mjs [start|ki|kommune|kw44]` → Karussells/Storys nach `posts/instagram/`.
@@ -68,13 +71,19 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 1. Medien nach `reels/`, `posts/`, `storys/` committen und auf `main` pushen. Link: `https://raw.githubusercontent.com/DerBeaker/marketing/main/<pfad>` (vorher mit `curl` prüfen: 200).
 2. `createScheduledPost` (oder einen alten Entwurf per `updateScheduledPost` umbauen) mit Brand-ID **7315125**, Zeitzone Europe/Berlin, **`autoPublish: true`, `draft: false`** – nie Entwürfe, so hat Manuel es festgelegt. Cover über `videoThumbnailUrl`.
 3. Reels mit Sprecher: **kein** `audioConfiguration`. Stumme Reels: Musik `audioConfiguration.audioId = "280438150848531"`.
-4. **Monatslimit:** Der Gratis-Tarif lässt ca. 20 Beiträge pro Monat zu (Oktober 2026: danach Fehler „You have reached your Metricool account limit“). Vor dem Planen die veröffentlichten + geplanten Beiträge des Monats zählen, höchstens 18 einplanen. Reels vor Storys.
+4. **Monatslimit:** Der Gratis-Tarif lässt ca. 20 Beiträge pro Monat zu (Oktober 2026: danach Fehler „You have reached your Metricool account limit“). Vor dem Planen die veröffentlichten + geplanten Beiträge des Monats zählen, höchstens 18 einplanen. `getScheduledPosts` zeigt nur, was noch nicht erschienen ist; Erschienenes aus `REDAKTIONSPLAN.md` bzw. den Analytics dazuzählen. Reels vor Storys.
 5. Danach `getScheduledPosts` prüfen: alle `PENDING`, `draft: false`, `autoPublish: true`; Fehler der Vortage beheben (neu terminieren).
-6. Manuel lädt nichts selbst hoch; fertige Videos zusätzlich per `SendUserFile` schicken.
+6. Manuel lädt nichts selbst hoch; fertige Videos zusätzlich per `SendUserFile` schicken. Was Metricool nicht kann (z. B. Link-Sticker in Storys), im Bericht als Handgriff für die Instagram-App nennen.
 
 ## Rhythmus und Rotation
 
-Manuel (04.11.2026): **alle 2–3 Tage ein Beitrag reicht** – Montag 18:00, Mittwoch 18:00, Samstag 10:00, nicht mehr. Überwiegend Reels mit Sprecher, höchstens 1 Story oder Karussell pro Woche anstelle eines Reels. Rotation: **nicht Schachtblick-lastig** (Manuel, 04.11.2026) – Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick. Jede Woche vorher Analytics (Reels: Reichweite, Aufrufe, Wiedergabezeit; Follower) ansehen und `REDAKTIONSPLAN.md` fortschreiben.
+Manuel (04.11.2026): **alle 2–3 Tage ein Beitrag reicht** – genau 3 Termine pro Woche: **Montag 18:00, Mittwoch 18:00, Samstag 10:00**, nicht mehr. Was dort schon eingeplant ist, bleibt; nur freie Termine füllen.
+
+- **Format:** überwiegend Reels mit Sprecher und echten Clips; höchstens 1 Story oder Karussell pro Woche anstelle eines Reels.
+- **Gewichtung: nicht Schachtblick-lastig** (Manuel, 04.11.2026; im Oktober lief fast nur Schachtblick). Pro Woche **höchstens 1 Schachtblick-Beitrag**, die anderen Termine gehen an AbscheiderBlick, Abscheider 3D und SpülBlick.
+- **Rotation:** jede Woche mindestens ein Abscheider-Beitrag (AbscheiderBlick und Abscheider 3D abwechselnd oder beide), SpülBlick höchstens 1 pro Woche (nur Vorstellung, Blickwinkel wechseln: Karte/Funkloch, Erfassung, Praktiker), dazwischen gelegentlich ein MMSE-Überblick über alle Apps. Nicht zweimal hintereinander dieselbe App.
+- **Keine Wiederholung:** Themen und Reels, die schon liefen oder eingeplant sind (`REDAKTIONSPLAN.md`), nicht noch einmal; lieber ein neues Reel aus anderen Clips und einem anderen Nutzen.
+- Jede Woche vorher Analytics (Reels: Reichweite, Aufrufe, Wiedergabezeit; Follower) ansehen, danach `REDAKTIONSPLAN.md` fortschreiben (Woche eintragen, Status „eingeplant“/„veröffentlicht“, Monatszähler).
 
 ## Hashtags
 

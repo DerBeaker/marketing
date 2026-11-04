@@ -67,7 +67,7 @@ Die Grafiken und Videos erstellt Claude selbst per Code (kein Canva). Die Werte 
 - Feed und Karussell: **1080 × 1350 (4:5)**. 3:4 wird im Feed oben und unten beschnitten.
 - Storys und Reels: 1080 × 1920 (9:16), oben ca. 250 px und unten ca. 450 px frei für die Instagram-Leisten.
 - Karussell: Titel-Slide, 2–4 Inhalts-Slides, CTA-Slide; gelber Button „wischen →“ auf dem Titel.
-- Reels: Kamerafahrt, Farblook (kühle Schatten, warme Lichter), Vignette, leichtes Filmkorn, Überblendungen. Ohne eingebettete Musik (stumme Tonspur); Musik wird in Metricool über `audioConfiguration` gesetzt (bisher genutzt: audioId `280438150848531`).
+- Reels: echte Clips/Fotos, Kamerafahrt, Farblook (kühle Schatten, warme Lichter), Vignette, leichtes Filmkorn, Überblendungen, **Sprecher Thorsten** (piper) – der Ton steckt im Video, in Metricool also kein `audioConfiguration`. Nur die älteren stummen Reels (`cinematic`, `aufmass`, `export`, `werbung`) bekommen Musik über `audioConfiguration` (audioId `280438150848531`). Einzelheiten im Skill `mmse-instagram`.
 
 **Werkzeuge im Repo `DerBeaker/marketing`** (siehe Skill `mmse-instagram`):
 - `node werkzeuge/make-instagram.mjs [start|ki|kommune|kw44]`: Karussells 4:5 nach `posts/instagram/`
@@ -78,18 +78,19 @@ Die Grafiken und Videos erstellt Claude selbst per Code (kein Canva). Die Werte 
 ## Strategie nach den Zahlen (Stand 22.10.2026)
 
 - Reels mit echtem Material im Kino-Look erreichen ein Vielfaches (Reel „Der erste Schacht“: 141 Reichweite, +3 Follower am Tag) gegenüber Karussells (zuletzt 16–33) und Reels mit KI-Personen (51) oder reinem App-Bildschirm (18).
-- Deshalb: ca. 3 Reels pro Woche, höchstens 1 Karussell. 10–20 s, in den ersten 2 Sekunden ein starkes echtes Bild mit kurzem Text (Ø Wiedergabe nur ca. 5 s). Keine KI-Personen.
+- Deshalb Reels statt Karussells, in den ersten 2 Sekunden ein starkes echtes Bild mit kurzem Text (Ø Wiedergabe nur ca. 5 s). Keine KI-Personen. Seit November mit Sprecher und echten Videoclips, ca. 25 s (Vorbild `schachtblickclip`).
+- **Seit 04.11.2026 (Manuel): nicht mehr Schachtblick-lastig.** Schachtblick bekommt höchstens 1 der 3 Wochentermine; Rhythmus und Rotation aller Apps stehen im Skill `mmse-instagram`.
 - Echte Schachtfotos und -clips sind der Engpass: neue Motive vom Nutzer erbitten (Freigabe klären, Metadaten entfernen, Schilder und Nummern unkenntlich machen).
 - Jede Woche vor der Planung die Metricool-Analytics (Reels: Reichweite, Aufrufe, Wiedergabezeit; Evolution: Follower) prüfen und die Strategie anpassen.
 
-## Content-Säulen (Rhythmus: ca. 3 Reels und höchstens 1 Karussell pro Woche, 3–5 Storys)
+## Content-Säulen (für den einen Schachtblick-Termin pro Woche; Rhythmus im Skill `mmse-instagram`)
 
 1. **Feature in 30 Sekunden**: ein Feature, ein Screenshot, ein Nutzen (z. B. Anschlüsse im Foto antippen).
 2. **Workflow**: vom Schachtfoto zum PDF-Protokoll, in 4–5 Schritten.
 3. **Normen-Know-how**: kurze Fachtipps zu ISYBAU, DWA-M 149-2, Zustandsklassen. Nur korrekt belegte Inhalte.
 4. **KI-Vorschläge**: Foto → Befundvorschläge → Prüfung im Büro (immer mit Pflichtregel oben).
 5. **Neuigkeiten**: neue Funktionen, Versionen, Laser-Kompatibilität.
-6. **Dialog (Storys)**: Umfragen und Fragen, z. B. "Wie dokumentiert ihr aktuell?", "Welches Feature fehlt euch?".
+6. **Dialog (Story, zählt als Wochenbeitrag)**: Umfragen und Fragen, z. B. "Wie dokumentiert ihr aktuell?", "Welches Feature fehlt euch?".
 
 ## Caption-Vorlage
 
