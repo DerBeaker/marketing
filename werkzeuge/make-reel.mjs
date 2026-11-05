@@ -24,7 +24,8 @@ const { chromium } = require(require.resolve('playwright', { paths: [execSync('n
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const tmp = mkdtempSync(join(tmpdir(), 'sb-reel-'));
 const NAME = process.argv[2] || 'cinematic';
-const ziel = join(root, 'reels', `reel-${NAME}.mp4`);
+const AB = process.argv.includes('--ab') ? Number(process.argv[process.argv.indexOf('--ab') + 1]) : 0;
+const ziel = join(root, 'reels', `reel-${NAME}${AB ? `-ab${AB}` : ''}.mp4`);
 const W = 1080, H = 1920, FPS = 30;
 const ff = (args) => execFileSync('ffmpeg', ['-y', '-v', 'error', ...args], { stdio: 'inherit' });
 
@@ -196,7 +197,7 @@ const REELS = {
     { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
-  // SpülBlick nur als Vorstellung: keine Preise, keine Kunden, Kontakt per Nachricht
+  // SpülBlick (seit 04.11.2026 online): 14 Tage kostenlos testen, 175 € je Spülfahrzeug und Jahr; keine Kunden, keine Feldtest-Zahlen
   spuelblick: async () => { TH = THEMEN.spuelblick; return [
     { bild: await tabletBild('sp1.png', 'material/screens/spuelblick-karte.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0008, ueber: 'smoothleft',
       text: await png('sp1t.png', oben('Neu von MMSE', 'SpülBlick.', 'Kanalreinigung dokumentieren')),
@@ -207,10 +208,12 @@ const REELS = {
     { bild: await tabletBild('sp3.png', 'material/screens/spuelblick-erfassen.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0007, ueber: 'fadeblack',
       text: await png('sp3t.png', oben('Am Fahrzeug', 'Schritt für Schritt.', 'Verschmutzung, Reinigung, Fotos')),
       sprich: 'Schritt für Schritt erfassen: Verschmutzung, Reinigung, Fotos.' },
-    { bild: await karte('sp4.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', '15 Jahre Kanalreinigung.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Gebaut von einem Praktiker mit fünfzehn Jahren Kanalreinigung.' },
-    { bild: await endkarte('Interesse?<br>Schreib uns.', { unter: 'läuft im Browser · auch offline', knopf: 'Nachricht schreiben' }), dauer: 3.5, zoom: 0.0004,
-      sprich: 'Interesse? Schreib uns eine Nachricht.' },
+    { bild: await karte('sp4.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', 'Über 20 Jahre am Werkzeug.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
+      sprich: 'Gebaut von einem Praktiker mit über zwanzig Jahren Erfahrung am Werkzeug.' },
+    { bild: await karte('sp5.png', 'list', 'Was es kostet', '175 € im Jahr', 'je Spülfahrzeug ·<br>alle Monteure und Büro inklusive'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
+      sprich: 'Hundertfünfundsiebzig Euro je Spülfahrzeug und Jahr. Alle Monteure und das Büro sind dabei.' },
+    { bild: await endkarte('14 Tage<br>kostenlos testen.', { unter: 'ohne Zahlungsdaten · spülblick.mmse-software.com', knopf: 'Link in der Bio' }), dauer: 3.5, zoom: 0.0004,
+      sprich: 'Vierzehn Tage kostenlos testen, ohne Zahlungsdaten. Link in der Bio.' },
   ]; },
   // „Der erste Schacht“ mit Sprecher (bestes Reel bisher, jetzt vertont)
   schachtblick: async () => { TH = THEMEN.schachtblick; return [
@@ -327,7 +330,7 @@ const REELS = {
     { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
-  // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), nur Vorstellung
+  // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Preis und Test wie spuelblick
   spuelblickclip: async () => { TH = THEMEN.spuelblick; return [
     { clip: 46216, dauer: 3, opt: { start: 4, quer: 0.5, zoom: 0.0005 }, text: await png('p1.png', text('6:00 Uhr', 'Ab zur<br>ersten Haltung.')), ueber: 'fadeblack',
       sprich: 'Sechs Uhr. Ab zur ersten Haltung.' },
@@ -341,14 +344,19 @@ const REELS = {
     { bild: await tabletBild('p5.png', 'material/screens/spuelblick-erfassen.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0007, ueber: 'fadeblack',
       text: await png('p5t.png', oben('Schritt für Schritt', 'Erfassen.', 'Verschmutzung, Reinigung, Fotos')),
       sprich: 'Erfassung Schritt für Schritt.' },
-    { bild: await karte('p6.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', '15 Jahre Kanalreinigung.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Gebaut von einem Praktiker mit fünfzehn Jahren Kanalreinigung.' },
-    { bild: await endkarte('Interesse?<br>Schreib uns.', { unter: 'läuft im Browser · auch offline', knopf: 'Nachricht schreiben' }), dauer: 3.5, zoom: 0.0004,
-      sprich: 'Interesse? Schreib uns eine Nachricht.' },
+    { bild: await karte('p6.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', 'Über 20 Jahre am Werkzeug.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
+      sprich: 'Gebaut von einem Praktiker mit über zwanzig Jahren Erfahrung am Werkzeug.' },
+    { bild: await karte('p7.png', 'list', 'Was es kostet', '175 € im Jahr', 'je Spülfahrzeug ·<br>alle Monteure und Büro inklusive'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
+      sprich: 'Hundertfünfundsiebzig Euro je Spülfahrzeug und Jahr. Alle Monteure und das Büro sind dabei.' },
+    { bild: await endkarte('14 Tage<br>kostenlos testen.', { unter: 'ohne Zahlungsdaten · spülblick.mmse-software.com', knopf: 'Link in der Bio' }), dauer: 3.5, zoom: 0.0004,
+      sprich: 'Vierzehn Tage kostenlos testen, ohne Zahlungsdaten. Link in der Bio.' },
   ]; },
 };
 if (!REELS[NAME]) throw new Error(`Unbekanntes Reel „${NAME}“ (${Object.keys(REELS).join(', ')})`);
-const SZENEN = await REELS[NAME]();
+const ALLE = await REELS[NAME]();
+// --ab <n>: nur die Szenen ab Nr. n (0-basiert) rendern → reels/reel-<name>-ab<n>.mp4, z. B. wenn die Clips der vorderen
+// Szenen fehlen; danach an die bestehende Datei anhängen (Schnitt im Schwarz der fadeblack-Überblendung davor, siehe Skill).
+const SZENEN = ALLE.slice(AB);
 await browser.close();
 
 // ---- Sprecher: piper (Thorsten) je Szene; die Szene dauert mindestens so lange wie der Satz plus Luft für die Überblendung
@@ -430,6 +438,6 @@ ff([...eing, '-filter_complex', f,
   '-map', '[v]', '-map', stimmen.length ? '[a]' : `${a0}:a`, '-c:v', 'libx264', '-crf', '21', '-preset', 'slow', '-pix_fmt', 'yuv420p',
   '-r', String(FPS), '-c:a', 'aac', '-shortest', '-movflags', '+faststart', ziel]);
 // Titelbild fürs Profilraster (Bild aus Szene 1 mit Text)
-ff(['-ss', '1.6', '-i', ziel, '-frames:v', '1', '-q:v', '2', join(root, 'reels', `reel-${NAME}-cover.jpg`)]);
+if (!AB) ff(['-ss', '1.6', '-i', ziel, '-frames:v', '1', '-q:v', '2', join(root, 'reels', `reel-${NAME}-cover.jpg`)]);
 rmSync(tmp, { recursive: true, force: true });
 console.log(`   reels/reel-${NAME}.mp4  ${gesamt.toFixed(1)} s  ${Math.round(statSync(ziel).size / 1024)} KB`);
