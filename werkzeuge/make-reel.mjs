@@ -13,7 +13,7 @@
 // Braucht Playwright (global) und ffmpeg; die App muss nicht laufen.
 import { createRequire } from 'node:module';
 import { execSync, execFileSync } from 'node:child_process';
-import { mkdtempSync, rmSync, statSync, readFileSync, existsSync } from 'node:fs';
+import { mkdtempSync, rmSync, statSync, readFileSync, existsSync, readdirSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -426,9 +426,19 @@ function bildSzene(bild, dauer, out, zoom = 0.0009) {
 // verpixeln: [[x, y, b, h], …] in Anteilen des Quellbilds (nach Drehung) – Logos, Schriftzüge, Kennzeichen unkenntlich machen.
 const verpixelFilter = (boxen = []) => boxen.map(([x, y, b, h], i) =>
   `split[va${i}][vb${i}];[vb${i}]crop=iw*${b}:ih*${h}:iw*${x}:ih*${y},scale=iw/14:-2,scale=iw*14:-2:flags=neighbor,boxblur=4[vc${i}];[va${i}][vc${i}]overlay=W*${x}:H*${y},`).join('');
+// UMTEC-Rohmaterial liegt in Unterordnern von material/umtec/ (wie im Drive); Dateiname genügt
+function umtecDatei(name, dir = join(root, 'material', 'umtec')) {
+  if (!existsSync(dir)) return null;
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const pf = join(dir, e.name);
+    if (e.isDirectory()) { const t = umtecDatei(name, pf); if (t) return t; } else if (e.name === name) return pf;
+  }
+  return null;
+}
 function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1, dunkel = 0, weich = 0, verpixeln = [] } = {}) {
   const n = Math.round(dauer * FPS);
-  const datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
+  let datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
+  if (!existsSync(datei) && String(clip).startsWith('material/umtec/')) datei = umtecDatei(String(clip).split('/').pop()) || datei;
   ff(['-stream_loop', '-1', '-ss', String(start), '-i', datei, '-frames:v', String(n), '-an', '-vf',
     `${verpixelFilter(verpixeln)}setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
     '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
