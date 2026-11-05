@@ -50,6 +50,8 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 
 ## Echtes Material: Quellen und Lizenzen
 
+- **Erste Wahl: Manuels eigenes Einsatzmaterial** (Google Drive, Ordner „UMTEC ARBEITS VIDEOS UND FOTOS“: Spüleinsätze, Dichtheitsprüfung, Generalinspektion, Schächte, Kanal-TV; früher TikTok „Rüdiger der Spüliger“). Einwilligungen der gezeigten Personen liegen vor (Manuel, 05.11.2026). Pflicht: **UMTEC-Logos und -Schriftzüge raus, auch auf Fahrzeugen und Kleidung**, Kennzeichen und Ortsschilder unkenntlich (`opt.verpixeln`); Szenen mit großem, bewegtem Logo (Lkw-Front, Sprinter, Seitenbeschriftung) weglassen. Echtes Material darf mit Pixabay-Clips gemischt werden. Rohdateien nur lokal in `material/umtec/` (gitignored, nie ins öffentliche Repo); laden über die Drive-Werkzeuge (nur bis ca. 5 MB) – größere Dateien nur, wenn Manuel den Ordner kurz per Link freigibt.
+
 - **Erlaubt:** eigene Fotos/Clips von Manuel (Freigabe, Metadaten entfernen, Schilder/Kennzeichen unkenntlich), **Pixabay** (Videos und Fotos, Lizenz erlaubt Werbung mit Bearbeitung ohne Namensnennung; Werkzeug `werkzeuge/pixabay.mjs`, Schlüssel aus dem Umgebungs-Secret `PIXABAY_KEY`; Clips mit Tag „ai generated“ nicht verwenden), **CC0/gemeinfrei** von Wikimedia Commons (Suche `… incategory:"CC-zero"`, eigener User-Agent, Ratenlimit → Pausen).
 - **Nicht:** Google-Bildersuche, Hersteller- und Firmenfotos, CC BY-SA in bearbeiteter Werbung, Bot-Schutz von Stock-Seiten umgehen. Pexels vergibt derzeit keine API-Schlüssel.
 - Jede Fremddatei nach `material/fotos/` bzw. `material/clips/` mit Quelle und Lizenz in `material/fotos/LIZENZEN.md`.
@@ -58,7 +60,7 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 ## Werkzeuge (in diesem Repo)
 
 - `node werkzeuge/make-reel.mjs <name>` → `reels/reel-<name>.mp4` + `-cover.jpg`. Neue Reels als weiteren Eintrag in `REELS` anlegen. Vorhandene Reels (Stand 04.11.2026; welche schon liefen oder eingeplant sind, steht in `REDAKTIONSPLAN.md` – nicht erneut posten):
-  - **ohne Sprecher, Einsatzclips + Gerät mit echten Screens (Standard ab 05.11.2026, Vorbild für neue):** `spuelblickeinsatz`, `spuelblickeinsatz2` (SpülBlick) – Helfer `geraet()` legt Handy/Tablet mit Screen über einen Clip, `opt.dunkel`/`opt.weich` dämpfen den Clip dahinter
+  - **ohne Sprecher, Einsatzclips + Gerät mit echten Screens (Standard ab 05.11.2026, Vorbild für neue):** `spuelblickumtec`, `spuelblickumtec2` (SpülBlick, echtes UMTEC-Material) – Helfer `geraet()` legt Handy/Tablet mit Screen über einen Clip, `opt.dunkel`/`opt.weich` dämpfen den Clip dahinter, `opt.verpixeln: [[x, y, b, h]]` (Anteile des Quellbilds) macht Logos/Kennzeichen unkenntlich
   - mit echten Clips + Sprecher (bis 05.11.2026): `abscheiderclip`, `abscheiderblick2` (AbscheiderBlick), `abscheider3dclip` (Abscheider 3D), `spuelblickclip` (SpülBlick), `schachtblickclip` (Schachtblick)
   - mit Fotos/Screens + Sprecher: `mmse` (alle Apps), `abscheiderfoto`, `abscheiderblick`, `abscheider3d`, `spuelblick`, `schachtblick`
   - ältere Schachtblick-Reels ohne Sprecher (stumm, Musik über Metricool): `cinematic`, `aufmass`, `export`, `werbung`; dazu `reels/promo-60s.mp4` (60-s-Werbevideo von Manuel, nicht aus dem Werkzeug)

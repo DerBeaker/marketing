@@ -341,23 +341,25 @@ const REELS = {
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
   // SpülBlick im Einsatz (05.11.2026, Manuel: ohne Sprecher, Musik über Metricool, Lust machen; keine Preise, kein Praktiker):
-  // echte Einsatzclips, darüber Handy/Tablet mit echten Screens
-  spuelblickeinsatz: async () => { TH = THEMEN.spuelblick; return [
-    { clip: 278, dauer: 2.4, opt: { start: 1, quer: 0.95, zoom: 0.0008 }, text: await png('e1.png', text('6:00 Uhr', 'Schacht<br>auf.')), ueber: 'smoothleft' },
-    { clip: 2333, dauer: 2.4, opt: { start: 1, quer: 0.8, zoom: 0.0008, dunkel: 0.1 }, text: await png('e2.png', text('Hochdruck', 'Haltung<br>frei.')), ueber: 'smoothleft' },
-    { clip: 348897, dauer: 3.2, opt: { start: 1, quer: 0.5, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('e3.png', sbBild('liste-960.webp'), 'SpülBlick', 'Haltung<br>antippen.', { art: 'handy', breite: 600, top: 760, drehen: -3 }), ueber: 'smoothleft' },
-    { clip: 348896, dauer: 3.2, opt: { start: 2, quer: 0.4, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('e4.png', sbBild('grad-960.webp'), 'Mit Handschuhen', 'Erfassen.<br>Fertig.', { art: 'handy', breite: 680, top: 780, drehen: 2 }), ueber: 'smoothleft' },
-    { clip: 190981, dauer: 2.4, opt: { start: 2, quer: 0.5, zoom: 0.0009 }, text: await png('e5.png', text('Kein Netz?', 'Egal.')), ueber: 'fadeblack' },
-    { clip: 270, dauer: 3.2, opt: { start: 1, quer: 0.7, zoom: 0.0005, weich: 2 }, text: await geraet('e6.png', sbBild('bericht-960.webp'), 'Feierabend', 'Bericht ist<br>schon fertig.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
+  // echtes UMTEC-Material aus Manuels Drive (material/umtec/, nicht im Repo; UMTEC-Logos, Schriftzüge und Kennzeichen verpixeln
+  // bzw. Szenen mit großem Logo weglassen), darüber Handy/Tablet mit echten SpülBlick-Screens
+  spuelblickumtec: async () => { TH = THEMEN.spuelblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20241026-WA0000.mp4', dauer: 2.4, opt: { start: 14.4, zoom: 0.0007, verpixeln: [[0.36, 0.41, 0.44, 0.11]] }, text: await png('e1.png', text('6:00 Uhr', 'Ab zur<br>Baustelle.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0005.mp4', dauer: 2.4, opt: { start: 0.4, zoom: 0.0009 }, text: await png('e2.png', text('Schacht auf', 'Wasser<br>marsch.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20240725-WA0002.mp4', dauer: 2.4, opt: { start: 46, zoom: 0.0009 }, text: await png('e3.png', text('Hochdruck', 'Haltung<br>frei.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250401-WA0022.mp4', dauer: 3.2, opt: { start: 30, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('e4.png', sbBild('liste-960.webp'), 'SpülBlick', 'Haltung<br>antippen.', { art: 'handy', breite: 600, top: 760, drehen: -3 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0028.mp4', dauer: 3.2, opt: { start: 5, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('e5.png', sbBild('grad-960.webp'), 'Mit Handschuhen', 'Erfassen.<br>Fertig.', { art: 'handy', breite: 680, top: 780, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250219-WA0008.mp4', dauer: 2.4, opt: { start: 1, zoom: 0.0009 }, text: await png('e6.png', text('Kein Netz?', 'Egal.')), ueber: 'fadeblack' },
+    { clip: U + 'VID-20241204-WA0002.mp4', dauer: 3.2, opt: { start: 1, zoom: 0.0005, weich: 1.5, verpixeln: [[0.52, 0.42, 0.42, 0.28]] }, text: await geraet('e7.png', sbBild('bericht-960.webp'), 'Feierabend', 'Bericht ist<br>schon fertig.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
     { bild: await endkarte('Schluss mit<br>Zetteln abtippen.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
-  spuelblickeinsatz2: async () => { TH = THEMEN.spuelblick; return [
-    { clip: 348898, dauer: 2.4, opt: { start: 2, quer: 0.5, zoom: 0.0007 }, text: await png('f1.png', text('Montag', 'Neue<br>Baustelle.')), ueber: 'smoothleft' },
-    { clip: 278, dauer: 2.4, opt: { start: 12, quer: 0.05, zoom: 0.0009 }, text: await png('f2.png', text('Saugen. Spülen.', 'Weiter.')), ueber: 'smoothleft' },
-    { clip: 4593, dauer: 3.2, opt: { start: 3, quer: 0.55, zoom: 0.0005, dunkel: 0.08, weich: 3 }, text: await geraet('f3.png', 'material/screens/spuelblick-karte.jpg', 'Offline-Karte', 'Jede Haltung.<br>Auch im Funkloch.', { art: 'tablet', breite: 980, top: 860, drehen: -2 }), ueber: 'smoothleft' },
-    { clip: 2333, dauer: 3.2, opt: { start: 10, quer: 0.6, zoom: 0.0005, dunkel: 0.08, weich: 3 }, text: await geraet('f4.png', 'material/screens/spuelblick-Fertig.jpg', 'Fotos rein', 'Speichern.<br>Nächste.', { art: 'tablet', breite: 980, top: 860, drehen: 2 }), ueber: 'smoothleft' },
-    { clip: 348897, dauer: 2.4, opt: { start: 12, quer: 0.5, zoom: 0.0008 }, text: await png('f5.png', text('Kein Zettel.', 'Kein WhatsApp-<br>Chaos.')), ueber: 'fadeblack' },
-    { clip: 190981, dauer: 3.2, opt: { start: 8, quer: 0.5, zoom: 0.0005, dunkel: 0.1, weich: 3 }, text: await geraet('f6.png', sbBild('bericht-960.webp'), 'Im Büro', 'Protokoll, Fotos,<br>Excel. Sofort.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
+  spuelblickumtec2: async () => { TH = THEMEN.spuelblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20241212-WA0012.mp4', dauer: 2.4, opt: { start: 6, zoom: 0.0007, verpixeln: [[0.57, 0.425, 0.18, 0.07], [0.38, 0.42, 0.20, 0.06], [0.12, 0.40, 0.24, 0.05]] }, text: await png('f1.png', text('Montag, 7 Uhr', 'Absicherung<br>steht.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250219-WA0009.mp4', dauer: 2.4, opt: { start: 4, zoom: 0.0009 }, text: await png('f2.png', text('Düse rein', 'Los geht’s.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0020.mp4', dauer: 3.2, opt: { start: 10, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('f3.png', 'material/screens/spuelblick-karte.jpg', 'Offline-Karte', 'Jede Haltung.<br>Auch im Funkloch.', { art: 'tablet', breite: 980, top: 860, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0024.mp4', dauer: 3.2, opt: { start: 20, zoom: 0.0005, dunkel: 0.06, weich: 2, verpixeln: [[0, 0.88, 0.6, 0.12]] }, text: await geraet('f4.png', 'material/screens/spuelblick-Fertig.jpg', 'Fotos rein', 'Speichern.<br>Nächste.', { art: 'tablet', breite: 980, top: 860, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: U + '20240906_152846.mp4', dauer: 2.4, opt: { start: 1, zoom: 0.0008 }, text: await png('f5.png', text('Kein Zettel.', 'Kein WhatsApp-<br>Chaos.')), ueber: 'fadeblack' },
+    { clip: U + 'VID-20240725-WA0001.mp4', dauer: 3.2, opt: { start: 32, zoom: 0.0005, weich: 2 }, text: await geraet('f6.png', sbBild('bericht-960.webp'), 'Im Büro', 'Protokoll, Fotos,<br>Excel. Sofort.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
     { bild: await endkarte('Deine Kolonne.<br>Dein Bericht.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
   // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Endkarte wie spuelblick
@@ -421,11 +423,14 @@ function bildSzene(bild, dauer, out, zoom = 0.0009) {
 }
 // Echte Videoclips (Pixabay-ID aus material/clips/, siehe werkzeuge/pixabay.mjs): hochkant ausschneiden (quer 0…1),
 // langsam hineinfahren, gleicher Farblook und Korn wie die Fotos; kurze Clips laufen in Schleife, Ton wird verworfen.
-function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1, dunkel = 0, weich = 0 } = {}) {
+// verpixeln: [[x, y, b, h], …] in Anteilen des Quellbilds (nach Drehung) – Logos, Schriftzüge, Kennzeichen unkenntlich machen.
+const verpixelFilter = (boxen = []) => boxen.map(([x, y, b, h], i) =>
+  `split[va${i}][vb${i}];[vb${i}]crop=iw*${b}:ih*${h}:iw*${x}:ih*${y},scale=iw/14:-2,scale=iw*14:-2:flags=neighbor,boxblur=4[vc${i}];[va${i}][vc${i}]overlay=W*${x}:H*${y},`).join('');
+function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1, dunkel = 0, weich = 0, verpixeln = [] } = {}) {
   const n = Math.round(dauer * FPS);
   const datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
   ff(['-stream_loop', '-1', '-ss', String(start), '-i', datei, '-frames:v', String(n), '-an', '-vf',
-    `setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
+    `${verpixelFilter(verpixeln)}setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
     '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
 }
 SZENEN.forEach((z, i) => z.clip !== undefined ? clipSzene(z.clip, z.dauer, `s${i}.mp4`, z.opt)

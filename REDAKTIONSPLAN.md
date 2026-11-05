@@ -40,10 +40,10 @@ Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). 
 | Sa 07.11. | 10:00 | Reel + Sprecher | Schachtblick | Echte Clips (Regen, Straßenablauf, Arbeiter) + Schachtfoto → App | reel-schachtblickclip.mp4 | eingeplant |
 | Mo 09.11. | 18:00 | Reel + Sprecher | MMSE | „Aus Schachtblick wird MMSE Software“, alle Apps | reel-mmse.mp4 | eingeplant |
 | Mi 11.11. | 18:00 | Reel + Sprecher | Abscheider 3D | 3D-Modell, Schnitt, Draufsicht, Dichtheit | reel-abscheider3d.mp4 | eingeplant |
-| Sa 14.11. | 10:00 | Reel + Musik | SpülBlick | Einsatz: Schacht, Hochdruck, Kolonne → Handy/Tablet mit SpülBlick, „Schluss mit Zetteln abtippen“, 14 Tage testen (05.11. neu, ohne Sprecher) | reel-spuelblickeinsatz.mp4 | eingeplant |
+| Sa 14.11. | 10:00 | Reel + Musik | SpülBlick | Einsatz: Schacht, Hochdruck, Kolonne → Handy/Tablet mit SpülBlick, „Schluss mit Zetteln abtippen“, 14 Tage testen (05.11. neu mit echtem UMTEC-Material, Logos/Kennzeichen verpixelt, ohne Sprecher) | reel-spuelblickumtec.mp4 | eingeplant |
 | Mo 16.11. | 18:00 | Reel + Sprecher | AbscheiderBlick | Teil 2: Großküche, Mängel mit Frist, Nachweise, Erinnerung | reel-abscheiderblick2.mp4 | eingeplant |
 | Mi 18.11. | 18:00 | Reel + Sprecher | Abscheider 3D | Baugrube, Bauplan, Arbeiter → 3D-Modell, Schnitt, Dichtheit | reel-abscheider3dclip.mp4 | eingeplant |
-| Sa 21.11. | 10:00 | Reel + Musik | SpülBlick | Neue Baustelle → Offline-Karte, Fotos, Bericht im Büro, „Deine Kolonne. Dein Bericht.“ (05.11. neu, ohne Sprecher) | reel-spuelblickeinsatz2.mp4 | eingeplant |
+| Sa 21.11. | 10:00 | Reel + Musik | SpülBlick | Neue Baustelle → Offline-Karte, Fotos, Bericht im Büro, „Deine Kolonne. Dein Bericht.“ (05.11. neu mit echtem UMTEC-Material, Logos/Kennzeichen verpixelt, ohne Sprecher) | reel-spuelblickumtec2.mp4 | eingeplant |
 | Mo 23.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (von Manuel) | promo-60s.mp4 | eingeplant |
 | Mi 25.11. | 18:00 | Reel + Sprecher | AbscheiderBlick oder Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
 | Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik (So 22.11.) |
