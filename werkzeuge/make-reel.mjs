@@ -197,7 +197,7 @@ const REELS = {
     { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
-  // SpülBlick (seit 04.11.2026 online): 14 Tage kostenlos testen, 175 € je Spülfahrzeug und Jahr; keine Kunden, keine Feldtest-Zahlen
+  // SpülBlick (seit 04.11.2026 online): 14 Tage kostenlos testen; auf Instagram keine Preise, kein „Praktiker“ (Manuel 05.11.2026)
   spuelblick: async () => { TH = THEMEN.spuelblick; return [
     { bild: await tabletBild('sp1.png', 'material/screens/spuelblick-karte.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0008, ueber: 'smoothleft',
       text: await png('sp1t.png', oben('Neu von MMSE', 'SpülBlick.', 'Kanalreinigung dokumentieren')),
@@ -208,10 +208,6 @@ const REELS = {
     { bild: await tabletBild('sp3.png', 'material/screens/spuelblick-erfassen.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0007, ueber: 'fadeblack',
       text: await png('sp3t.png', oben('Am Fahrzeug', 'Schritt für Schritt.', 'Verschmutzung, Reinigung, Fotos')),
       sprich: 'Schritt für Schritt erfassen: Verschmutzung, Reinigung, Fotos.' },
-    { bild: await karte('sp4.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', 'Über 20 Jahre am Werkzeug.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Gebaut von einem Praktiker mit über zwanzig Jahren Erfahrung am Werkzeug.' },
-    { bild: await karte('sp5.png', 'list', 'Was es kostet', '175 € im Jahr', 'je Spülfahrzeug ·<br>alle Monteure und Büro inklusive'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Hundertfünfundsiebzig Euro je Spülfahrzeug und Jahr. Alle Monteure und das Büro sind dabei.' },
     { bild: await endkarte('14 Tage<br>kostenlos testen.', { unter: 'ohne Zahlungsdaten · spülblick.mmse-software.com', knopf: 'Link in der Bio' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Vierzehn Tage kostenlos testen, ohne Zahlungsdaten. Link in der Bio.' },
   ]; },
@@ -330,7 +326,7 @@ const REELS = {
     { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
-  // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Preis und Test wie spuelblick
+  // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Endkarte wie spuelblick
   spuelblickclip: async () => { TH = THEMEN.spuelblick; return [
     { clip: 46216, dauer: 3, opt: { start: 4, quer: 0.5, zoom: 0.0005 }, text: await png('p1.png', text('6:00 Uhr', 'Ab zur<br>ersten Haltung.')), ueber: 'fadeblack',
       sprich: 'Sechs Uhr. Ab zur ersten Haltung.' },
@@ -344,10 +340,6 @@ const REELS = {
     { bild: await tabletBild('p5.png', 'material/screens/spuelblick-erfassen.jpg', TH, { breite: 1040, top: 900 }), dauer: 3, zoom: 0.0007, ueber: 'fadeblack',
       text: await png('p5t.png', oben('Schritt für Schritt', 'Erfassen.', 'Verschmutzung, Reinigung, Fotos')),
       sprich: 'Erfassung Schritt für Schritt.' },
-    { bild: await karte('p6.png', 'user', 'Aus der Praxis', 'Gebaut von<br>einem Praktiker.', 'Über 20 Jahre am Werkzeug.'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Gebaut von einem Praktiker mit über zwanzig Jahren Erfahrung am Werkzeug.' },
-    { bild: await karte('p7.png', 'list', 'Was es kostet', '175 € im Jahr', 'je Spülfahrzeug ·<br>alle Monteure und Büro inklusive'), dauer: 3, zoom: 0.0006, ueber: 'fadeblack',
-      sprich: 'Hundertfünfundsiebzig Euro je Spülfahrzeug und Jahr. Alle Monteure und das Büro sind dabei.' },
     { bild: await endkarte('14 Tage<br>kostenlos testen.', { unter: 'ohne Zahlungsdaten · spülblick.mmse-software.com', knopf: 'Link in der Bio' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Vierzehn Tage kostenlos testen, ohne Zahlungsdaten. Link in der Bio.' },
   ]; },
@@ -363,10 +355,14 @@ await browser.close();
 const PIPER = process.env.PIPER_BIN || 'piper';
 const STIMME = process.env.PIPER_MODEL || join(root, '.cache', 'piper', 'de_DE-thorsten-high.onnx');
 const dauerVon = (datei) => parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', datei]).toString());
+// Aussprache: piper/espeak liest manche Namen falsch (z. B. „Spülblick“ mit kurzem ü → klingt wie „Spüll-blick“).
+// Nur für den Sprecher umschreiben, Texte im Bild bleiben richtig. Prüfen: PiperVoice.phonemize(text) im piper-venv.
+const AUSSPRACHE = [[/Spülblick/g, 'Spühlblick']];
+const sprechtext = (t) => AUSSPRACHE.reduce((x, [m, r]) => x.replace(m, r), t);
 SZENEN.forEach((z, i) => {
   if (!z.sprich) return;
   const roh = join(tmp, `v${i}-roh.wav`); z.stimme = join(tmp, `v${i}.wav`);
-  execFileSync(PIPER, ['-m', STIMME, '-f', roh, '--length_scale', '1.0', '--sentence_silence', '0.2'], { input: z.sprich, stdio: ['pipe', 'ignore', 'ignore'] });
+  execFileSync(PIPER, ['-m', STIMME, '-f', roh, '--length_scale', '1.0', '--sentence_silence', '0.2'], { input: sprechtext(z.sprich), stdio: ['pipe', 'ignore', 'ignore'] });
   ff(['-i', roh, '-af', 'highpass=f=70,acompressor=threshold=-20dB:ratio=3:attack=5:release=120,aresample=44100', '-ac', '2', z.stimme]);
   z.dauer = Math.max(z.dauer, dauerVon(z.stimme) + 1.1);
 });
