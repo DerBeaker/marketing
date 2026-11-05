@@ -13,7 +13,7 @@
 // Braucht Playwright (global) und ffmpeg; die App muss nicht laufen.
 import { createRequire } from 'node:module';
 import { execSync, execFileSync } from 'node:child_process';
-import { mkdtempSync, rmSync, statSync, readFileSync } from 'node:fs';
+import { mkdtempSync, rmSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -85,6 +85,20 @@ const endkarte = (zeile, { th = TH, unter = 'kostenlos · ohne Installation · a
     <div style="font-size:52px;font-weight:800;margin-top:60px;line-height:1.25">${zeile}</div>
     ${unter ? `<div style="font-size:38px;margin-top:26px;opacity:.9">${unter}</div>` : ''}
     <div class="knopf" style="margin-top:70px">${knopf}</div></div>`, { hintergrund: true, th });
+
+// Gerät über einem Einsatzclip (Szene mit clip + text: geraet(...)): Handy oder Tablet mit echtem Screen schwebt ins Bild,
+// oben Überschrift; Schatten statt Markenhintergrund, damit der Clip sichtbar bleibt. img = Pfad relativ zum Repo oder absolut.
+const bildDaten = (img) => { const pf = img.startsWith('/') ? img : bildPfad(img); const typ = pf.endsWith('.webp') ? 'webp' : pf.endsWith('.png') ? 'png' : 'jpeg';
+  return `data:image/${typ};base64,${readFileSync(pf).toString('base64')}`; };
+const geraet = (name, img, klein, gross, { art = 'tablet', breite, top, drehen = 0 } = {}) => {
+  const b = breite || (art === 'handy' ? 640 : 960);
+  const t = top || (art === 'handy' ? 640 : 820);
+  return png(name, `<div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.05) 32%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.45))"></div>
+  <div class="t" style="top:250px"><div class="klein">${klein}</div><div class="gross" style="font-size:96px">${gross}</div></div>
+  <div class="${art}" style="position:absolute;left:${(W - b) / 2}px;width:${b}px;top:${t}px;transform:rotate(${drehen}deg)"><img src="${bildDaten(img)}"></div>`);
+};
+const SB_START = '/home/user/spuelblick/app/start/bilder/'; // Screens der SpülBlick-Startseite (gelesenes spuelblick-Repo)
+const sbBild = (n) => (existsSync(join(SB_START, n)) ? join(SB_START, n) : join(root, 'material', 'screens', n));
 
 // Funktionskarte: dunkler Markenhintergrund, Icon im Akzent, Überschrift und Zeile (für Szenen ohne Foto)
 const karte = (name, ic, klein, gross, zeile, th = TH) => png(name, `${hgVerlauf(th)}<div class="t" style="top:600px">
@@ -326,6 +340,26 @@ const REELS = {
     { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline' }), dauer: 3.5, zoom: 0.0004,
       sprich: 'Kostenlos und ohne Anmeldung. Link in der Bio.' },
   ]; },
+  // SpülBlick im Einsatz (05.11.2026, Manuel: ohne Sprecher, Musik über Metricool, Lust machen; keine Preise, kein Praktiker):
+  // echte Einsatzclips, darüber Handy/Tablet mit echten Screens
+  spuelblickeinsatz: async () => { TH = THEMEN.spuelblick; return [
+    { clip: 278, dauer: 2.4, opt: { start: 1, quer: 0.95, zoom: 0.0008 }, text: await png('e1.png', text('6:00 Uhr', 'Schacht<br>auf.')), ueber: 'smoothleft' },
+    { clip: 2333, dauer: 2.4, opt: { start: 1, quer: 0.8, zoom: 0.0008, dunkel: 0.1 }, text: await png('e2.png', text('Hochdruck', 'Haltung<br>frei.')), ueber: 'smoothleft' },
+    { clip: 348897, dauer: 3.2, opt: { start: 1, quer: 0.5, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('e3.png', sbBild('liste-960.webp'), 'SpülBlick', 'Haltung<br>antippen.', { art: 'handy', breite: 600, top: 760, drehen: -3 }), ueber: 'smoothleft' },
+    { clip: 348896, dauer: 3.2, opt: { start: 2, quer: 0.4, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('e4.png', sbBild('grad-960.webp'), 'Mit Handschuhen', 'Erfassen.<br>Fertig.', { art: 'handy', breite: 680, top: 780, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: 190981, dauer: 2.4, opt: { start: 2, quer: 0.5, zoom: 0.0009 }, text: await png('e5.png', text('Kein Netz?', 'Egal.')), ueber: 'fadeblack' },
+    { clip: 270, dauer: 3.2, opt: { start: 1, quer: 0.7, zoom: 0.0005, weich: 2 }, text: await geraet('e6.png', sbBild('bericht-960.webp'), 'Feierabend', 'Bericht ist<br>schon fertig.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Schluss mit<br>Zetteln abtippen.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  spuelblickeinsatz2: async () => { TH = THEMEN.spuelblick; return [
+    { clip: 348898, dauer: 2.4, opt: { start: 2, quer: 0.5, zoom: 0.0007 }, text: await png('f1.png', text('Montag', 'Neue<br>Baustelle.')), ueber: 'smoothleft' },
+    { clip: 278, dauer: 2.4, opt: { start: 12, quer: 0.05, zoom: 0.0009 }, text: await png('f2.png', text('Saugen. Spülen.', 'Weiter.')), ueber: 'smoothleft' },
+    { clip: 4593, dauer: 3.2, opt: { start: 3, quer: 0.55, zoom: 0.0005, dunkel: 0.08, weich: 3 }, text: await geraet('f3.png', 'material/screens/spuelblick-karte.jpg', 'Offline-Karte', 'Jede Haltung.<br>Auch im Funkloch.', { art: 'tablet', breite: 980, top: 860, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: 2333, dauer: 3.2, opt: { start: 10, quer: 0.6, zoom: 0.0005, dunkel: 0.08, weich: 3 }, text: await geraet('f4.png', 'material/screens/spuelblick-Fertig.jpg', 'Fotos rein', 'Speichern.<br>Nächste.', { art: 'tablet', breite: 980, top: 860, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: 348897, dauer: 2.4, opt: { start: 12, quer: 0.5, zoom: 0.0008 }, text: await png('f5.png', text('Kein Zettel.', 'Kein WhatsApp-<br>Chaos.')), ueber: 'fadeblack' },
+    { clip: 190981, dauer: 3.2, opt: { start: 8, quer: 0.5, zoom: 0.0005, dunkel: 0.1, weich: 3 }, text: await geraet('f6.png', sbBild('bericht-960.webp'), 'Im Büro', 'Protokoll, Fotos,<br>Excel. Sofort.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Deine Kolonne.<br>Dein Bericht.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
   // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Endkarte wie spuelblick
   spuelblickclip: async () => { TH = THEMEN.spuelblick; return [
     { clip: 46216, dauer: 3, opt: { start: 4, quer: 0.5, zoom: 0.0005 }, text: await png('p1.png', text('6:00 Uhr', 'Ab zur<br>ersten Haltung.')), ueber: 'fadeblack',
@@ -387,11 +421,11 @@ function bildSzene(bild, dauer, out, zoom = 0.0009) {
 }
 // Echte Videoclips (Pixabay-ID aus material/clips/, siehe werkzeuge/pixabay.mjs): hochkant ausschneiden (quer 0…1),
 // langsam hineinfahren, gleicher Farblook und Korn wie die Fotos; kurze Clips laufen in Schleife, Ton wird verworfen.
-function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1 } = {}) {
+function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 = 1.02, tempo = 1, dunkel = 0, weich = 0 } = {}) {
   const n = Math.round(dauer * FPS);
   const datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
   ff(['-stream_loop', '-1', '-ss', String(start), '-i', datei, '-frames:v', String(n), '-an', '-vf',
-    `setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK},${KORN},format=yuv420p`,
+    `setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
     '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
 }
 SZENEN.forEach((z, i) => z.clip !== undefined ? clipSzene(z.clip, z.dauer, `s${i}.mp4`, z.opt)

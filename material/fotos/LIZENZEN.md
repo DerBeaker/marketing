@@ -31,3 +31,7 @@ Rohclips liegen nur lokal in `material/clips/` (gitignored, Pixabay verbietet di
 | 2333 | Hochdruckreinigung einer Straße | https://pixabay.com/videos/id-2333/ |
 | 4593 | Rohrauslauf in einen Graben | https://pixabay.com/videos/id-4593/ |
 | 46216 | Straße mit Verkehr am Tag | https://pixabay.com/videos/id-46216/ |
+| 278 | Offener Schacht mit Saugschlauch und Dampf | https://pixabay.com/videos/id-278/ |
+| 348896 | Bauarbeiter mit Warnweste an der Absperrung (dritte Einstellung) | https://pixabay.com/videos/id-348896/ |
+| 270 | Straßenbaustelle mit Dampf, Schild und Pylonen | https://pixabay.com/videos/id-270/ |
+| 190981 | Schachtdeckel im Regen | https://pixabay.com/videos/id-190981/ |
