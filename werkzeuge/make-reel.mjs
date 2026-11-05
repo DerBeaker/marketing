@@ -90,12 +90,12 @@ const endkarte = (zeile, { th = TH, unter = 'kostenlos · ohne Installation · a
 // oben Überschrift; Schatten statt Markenhintergrund, damit der Clip sichtbar bleibt. img = Pfad relativ zum Repo oder absolut.
 const bildDaten = (img) => { const pf = img.startsWith('/') ? img : bildPfad(img); const typ = pf.endsWith('.webp') ? 'webp' : pf.endsWith('.png') ? 'png' : 'jpeg';
   return `data:image/${typ};base64,${readFileSync(pf).toString('base64')}`; };
-const geraet = (name, img, klein, gross, { art = 'tablet', breite, top, drehen = 0 } = {}) => {
+const geraet = (name, img, klein, gross, { art = 'tablet', breite, top, drehen = 0, th = TH } = {}) => {
   const b = breite || (art === 'handy' ? 640 : 960);
   const t = top || (art === 'handy' ? 640 : 820);
   return png(name, `<div style="position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.05) 32%,rgba(0,0,0,.05) 60%,rgba(0,0,0,.45))"></div>
   <div class="t" style="top:250px"><div class="klein">${klein}</div><div class="gross" style="font-size:96px">${gross}</div></div>
-  <div class="${art}" style="position:absolute;left:${(W - b) / 2}px;width:${b}px;top:${t}px;transform:rotate(${drehen}deg)"><img src="${bildDaten(img)}"></div>`);
+  <div class="${art}" style="position:absolute;left:${(W - b) / 2}px;width:${b}px;top:${t}px;transform:rotate(${drehen}deg)"><img src="${bildDaten(img)}"></div>`, { th });
 };
 const SB_START = '/home/user/spuelblick/app/start/bilder/'; // Screens der SpülBlick-Startseite (gelesenes spuelblick-Repo)
 const sbBild = (n) => (existsSync(join(SB_START, n)) ? join(SB_START, n) : join(root, 'material', 'screens', n));
@@ -361,6 +361,48 @@ const REELS = {
     { clip: U + '20240906_152846.mp4', dauer: 2.4, opt: { start: 1, zoom: 0.0008 }, text: await png('f5.png', text('Kein Zettel.', 'Kein WhatsApp-<br>Chaos.')), ueber: 'fadeblack' },
     { clip: U + 'VID-20240725-WA0001.mp4', dauer: 3.2, opt: { start: 32, zoom: 0.0005, weich: 2 }, text: await geraet('f6.png', sbBild('bericht-960.webp'), 'Im Büro', 'Protokoll, Fotos,<br>Excel. Sofort.', { art: 'tablet', breite: 960, top: 900 }), ueber: 'fadeblack' },
     { bild: await endkarte('Deine Kolonne.<br>Dein Bericht.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  // ---- Echtes UMTEC-Material für alle Apps (05.11.2026): ohne Sprecher, Musik über Metricool, keine Preise.
+  // Fotos vorbereitet in material/umtec/_reel/ (gedreht, Tankstellenmarke und Kennzeichen verpixelt), Clips aus material/umtec/.
+  schachtblickumtec: async () => { TH = THEMEN.schachtblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20241031-WA0005.mp4', dauer: 2.4, opt: { start: 1, zoom: 0.0009 }, text: await png('s1.png', text('Montag, 7 Uhr', 'Schacht<br>auf.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250320-WA0000.mp4', dauer: 2.4, opt: { start: 30, zoom: 0.0009 }, text: await png('s2.png', text('Erst schauen', 'Dann<br>kodieren.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20241007-WA0005.mp4', dauer: 3.2, opt: { start: 2, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('s3.png', 'app-foto.jpg', 'Foto von oben', 'Anschlüsse<br>antippen.', { art: 'handy', breite: 520, top: 640, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250227-WA0002.mp4', dauer: 3.2, opt: { start: 0.4, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('s4.png', 'app-befunde.jpg', 'Schäden kodieren', 'Klasse<br>sofort.', { art: 'handy', breite: 520, top: 640, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0023.mp4', dauer: 3.2, opt: { start: 0.5, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('s5.png', 'app-aufbau.jpg', 'Aufbau', 'Als 3D-<br>Modell.', { art: 'handy', breite: 520, top: 640, drehen: -2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Schachtinspektion.<br>Direkt am Schacht.', { unter: 'kostenlos im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  abscheiderblickumtec: async () => { TH = THEMEN.abscheiderblick; const F = 'material/umtec/_reel/'; return [
+    { foto: F + 'tankstelle-nacht.jpg', dauer: 2.4, opt: { quer: 0.1, zoom: 0.0009 }, text: await png('a1.png', text('Tankstelle, 6 Uhr', 'Generalinspektion.')), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-leer.jpg', dauer: 2.4, opt: { quer: 0.5, zoom: 0.0010 }, text: await png('a2.png', text('Leer gesaugt', 'Jetzt wird<br>geprüft.')), ueber: 'smoothleft' },
+    { foto: F + 'schwimmer.jpg', dauer: 3.2, opt: { quer: 0.55, zoom: 0.0006 }, text: await geraet('a3.png', '/home/user/gi-tool/app/willkommen/bilder/handy-zustand.webp', 'Mängel antippen', 'Frist kommt<br>von selbst.', { art: 'handy', breite: 500, top: 640, drehen: -2 }), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-koaleszenz.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('a4.png', '/home/user/gi-tool/app/willkommen/bilder/handy-bemessung.webp', 'Bemessung', 'Mit<br>Rechenweg.', { art: 'handy', breite: 500, top: 640, drehen: 2 }), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-leiter.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('a5.png', '/home/user/gi-tool/app/willkommen/bilder/bericht-1.webp', 'Ein Knopf', 'Prüfbericht<br>fertig.', { art: 'tablet', breite: 640, top: 700 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Generalinspektion.<br>Ohne Papierkram.', { unter: 'für Einzelanwender kostenlos', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  abscheider3dumtec: async () => { TH = THEMEN.abscheider3d; const U = 'material/umtec/'; const F = U + '_reel/'; return [
+    { clip: U + 'VID-20250509-WA0010.mp4', dauer: 2.4, opt: { start: 30, zoom: 0.0008 }, text: await png('d1.png', text('Heute', 'Dichtheits-<br>prüfung.')), ueber: 'smoothleft' },
+    { foto: F + 'stativ-schild.jpg', dauer: 2.4, opt: { quer: 0.45, zoom: 0.0010 }, text: await png('d2.png', text('Stativ steht', 'Wasser<br>rein.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250509-WA0014.mp4', dauer: 2.4, opt: { start: 6, zoom: 0.0008 }, text: await png('d3.png', text('Pegel', 'messen.')), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-edelstahl.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('d4.png', 'material/screens/abscheider3d-modell.jpg', 'Abscheider 3D', 'Bemaßtes<br>Modell.', { art: 'tablet', breite: 940, top: 820, drehen: -2 }), ueber: 'smoothleft' },
+    { foto: F + 'messung-schacht.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('d5.png', 'material/screens/abscheider3d-dichtheit.jpg', 'Anhang A', 'Wasserbilanz.<br>Fertig.', { art: 'handy', breite: 560, top: 640, drehen: 2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'Daten bleiben auf dem Gerät', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  abscheider3dumtec2: async () => { TH = THEMEN.abscheider3d; const F = 'material/umtec/_reel/'; return [
+    { foto: F + 'tankstelle-tag.jpg', dauer: 2.4, opt: { quer: 0.12, zoom: 0.0009 }, text: await png('h1.png', text('Bauwerksaufnahme', 'Vor Ort.')), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-blau.jpg', dauer: 2.4, opt: { quer: 0.5, zoom: 0.0010 }, text: await png('h2.png', text('Jedes Maß', 'zählt.')), ueber: 'smoothleft' },
+    { foto: F + 'sonde-schacht.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('h3.png', 'material/screens/abscheider3d-schnitt.jpg', 'Längsschnitt', 'Auf<br>Knopfdruck.', { art: 'tablet', breite: 960, top: 860, drehen: -2 }), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-einbau.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('h4.png', 'material/screens/abscheider3d-draufsicht.jpg', 'Draufsicht', 'Bemaßt.', { art: 'tablet', breite: 940, top: 820, drehen: 2 }), ueber: 'smoothleft' },
+    { foto: F + 'rohr-tauchrohr.jpg', dauer: 2.4, opt: { quer: 0.5, zoom: 0.0009 }, text: await png('h5.png', text('Fett oder Benzin', 'Beides<br>drin.')), ueber: 'fadeblack' },
+    { bild: await endkarte('Vom Aufmaß<br>zum 3D-Modell.', { unter: 'kostenlos · ohne Anmeldung', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  mmseumtec: async () => { TH = THEMEN.mmse; const U = 'material/umtec/'; const F = U + '_reel/'; return [
+    { clip: U + 'VID-20250507-WA0024.mp4', dauer: 2.4, opt: { start: 15, zoom: 0.0008 }, text: await png('m1.png', text('Abwasser', 'ist unser<br>Alltag.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0005.mp4', dauer: 2.8, opt: { start: 0.4, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('m2.png', sbBild('liste-960.webp'), 'SpülBlick', 'Kanal-<br>reinigung.', { art: 'handy', breite: 560, top: 720, drehen: -2, th: THEMEN.spuelblick }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20241007-WA0005.mp4', dauer: 2.8, opt: { start: 2, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('m3.png', 'app-foto.jpg', 'Schachtblick', 'Schacht-<br>inspektion.', { art: 'handy', breite: 500, top: 660, drehen: 2, th: THEMEN.schachtblick }), ueber: 'smoothleft' },
+    { foto: F + 'tankstelle-nacht.jpg', dauer: 2.8, opt: { quer: 0.1, zoom: 0.0005 }, text: await geraet('m4.png', '/home/user/gi-tool/app/willkommen/bilder/handy-pruefung.webp', 'AbscheiderBlick', 'General-<br>inspektion.', { art: 'handy', breite: 480, top: 660, drehen: -2, th: THEMEN.abscheiderblick }), ueber: 'smoothleft' },
+    { foto: F + 'stativ-schacht.jpg', dauer: 2.8, opt: { quer: 0.5, zoom: 0.0005 }, text: await geraet('m5.png', 'material/screens/abscheider3d-modell.jpg', 'Abscheider 3D', 'Bauwerk<br>in 3D.', { art: 'tablet', breite: 940, top: 860, drehen: 2, th: THEMEN.abscheider3d }), ueber: 'fadeblack' },
+    { bild: await endkarte('Ein Account.<br>Vier Apps.', { unter: 'im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
   // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Endkarte wie spuelblick
   spuelblickclip: async () => { TH = THEMEN.spuelblick; return [
