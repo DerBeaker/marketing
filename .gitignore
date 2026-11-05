@@ -2,3 +2,6 @@
 node_modules/
 *.tmp
 material/clips/
+
+# UMTEC-Rohmaterial (Fotos/Videos aus Manuels Drive) – nie ins öffentliche Repo, nur fertig bearbeitete Reels ohne Logos
+material/umtec/
