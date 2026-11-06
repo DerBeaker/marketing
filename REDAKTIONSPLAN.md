@@ -29,7 +29,7 @@ Ziel: fotorealistisch, echte Menschen, Tankstellen, Großküchen, Abscheider, Sp
 
 ## Rhythmus
 
-Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). Überwiegend Reels mit Sprecher und echten Clips, höchstens 1 Story/Karussell pro Woche; Schachtblick höchstens 1 Beitrag pro Woche; Veröffentlichung immer direkt. Regeln im Detail: Skill `mmse-instagram`, Abschnitt „Rhythmus und Rotation“.
+Feed: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026), davon 1 Karussell pro Woche, sonst Reels mit echtem Material und Musik (ohne Sprecher); dazu 1 Story pro Woche (Di/Do 18:00) (Manuel, 06.11.2026). Schachtblick höchstens 1 Feed-Beitrag pro Woche, keine Preise; Veröffentlichung immer direkt. Regeln im Detail: Skill `mmse-instagram`, Abschnitt „Rhythmus und Rotation“.
 
 ## November 2026
 
@@ -64,7 +64,7 @@ Sprecher: piper, Stimme Thorsten (frei). Reels mit Sprecher bringen ihren Ton mi
 
 ## Automatik
 
-Geplante Aufgabe „MMSE Wochenplanung Instagram“, sonntags 18:48: plant die Folgewoche nach Skill und diesem Plan (3 Termine Mo/Mi/Sa, überwiegend Reels mit Sprecher, höchstens 1 Story/Karussell, Schachtblick höchstens 1 pro Woche, Monatslimit 18), füllt nur freie Termine, veröffentlicht direkt und schreibt die Woche hier fort.
+Geplante Aufgabe „MMSE Wochenplanung Instagram“, sonntags 18:48: plant die Folgewoche nach Skill und diesem Plan (Feed Mo/Mi/Sa: 2 Reels + 1 Karussell; 1 Story Di/Do; Schachtblick höchstens 1 pro Woche; keine Preise; Monatslimit 18), füllt nur freie Termine, veröffentlicht direkt und schreibt die Woche hier fort.
 
 ## Texte
 
