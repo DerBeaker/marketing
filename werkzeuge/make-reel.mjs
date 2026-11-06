@@ -404,6 +404,17 @@ const REELS = {
     { foto: F + 'stativ-schacht.jpg', dauer: 2.8, opt: { quer: 0.5, zoom: 0.0005 }, text: await geraet('m5.png', 'material/screens/abscheider3d-modell.jpg', 'Abscheider 3D', 'Bauwerk<br>in 3D.', { art: 'tablet', breite: 940, top: 860, drehen: 2, th: THEMEN.abscheider3d }), ueber: 'fadeblack' },
     { bild: await endkarte('Ein Account.<br>Vier Apps.', { unter: 'im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
+  // ---- Storys (9:16, ca. 9 s, ohne Ton; Link-Sticker setzt Manuel in der Instagram-App)
+  storyabscheider: async () => { TH = THEMEN.abscheiderblick; const F = 'material/umtec/_reel/'; return [
+    { foto: F + 'tankstelle-tag.jpg', dauer: 2.6, opt: { quer: 0.12, zoom: 0.0009 }, text: await png('sa1.png', text('Wusstest du?', 'Alle 5 Jahre<br>General-<br>inspektion.')), ueber: 'smoothleft' },
+    { foto: F + 'abscheider-koaleszenz.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('sa2.png', '/home/user/gi-tool/app/willkommen/bilder/handy-start.webp', 'AbscheiderBlick', 'erinnert<br>dich dran.', { art: 'handy', breite: 500, top: 640, drehen: -2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Für Einzelanwender<br>kostenlos.', { unter: 'gi.mmse-software.com', knopf: 'Jetzt ansehen' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  storyspuelblick: async () => { TH = THEMEN.spuelblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20250410-WA0005.mp4', dauer: 2.6, opt: { start: 0.4, zoom: 0.0009 }, text: await png('ss1.png', text('Funkloch?', 'Egal.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250401-WA0022.mp4', dauer: 3.2, opt: { start: 30, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('ss2.png', 'material/screens/spuelblick-karte.jpg', 'SpülBlick', 'Karte und Haltungen<br>offline.', { art: 'tablet', breite: 960, top: 860, drehen: -2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('14 Tage<br>kostenlos testen.', { unter: 'spülblick.mmse-software.com', knopf: 'Jetzt testen' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
   // SpülBlick mit echten Clips (Straße am Morgen, Hochdruck, Rohrauslauf), Endkarte wie spuelblick
   spuelblickclip: async () => { TH = THEMEN.spuelblick; return [
     { clip: 46216, dauer: 3, opt: { start: 4, quer: 0.5, zoom: 0.0005 }, text: await png('p1.png', text('6:00 Uhr', 'Ab zur<br>ersten Haltung.')), ueber: 'fadeblack',
