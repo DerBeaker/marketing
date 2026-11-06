@@ -373,7 +373,7 @@ const REELS = {
     { bild: await endkarte('Schachtinspektion.<br>Direkt am Schacht.', { unter: 'kostenlos im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
   abscheiderblickumtec: async () => { TH = THEMEN.abscheiderblick; const F = 'material/umtec/_reel/'; return [
-    { foto: F + 'tankstelle-nacht.jpg', dauer: 2.4, opt: { quer: 0.1, zoom: 0.0009 }, text: await png('a1.png', text('Tankstelle, 6 Uhr', 'Generalinspektion.')), ueber: 'smoothleft' },
+    { foto: F + 'tankstelle-nacht.jpg', dauer: 2.4, opt: { quer: 0.1, zoom: 0.0009 }, text: await png('a1.png', text('Tankstelle, 6 Uhr', 'General-<br>inspektion.')), ueber: 'smoothleft' },
     { foto: F + 'abscheider-leer.jpg', dauer: 2.4, opt: { quer: 0.5, zoom: 0.0010 }, text: await png('a2.png', text('Leer gesaugt', 'Jetzt wird<br>geprüft.')), ueber: 'smoothleft' },
     { foto: F + 'schwimmer.jpg', dauer: 3.2, opt: { quer: 0.55, zoom: 0.0006 }, text: await geraet('a3.png', '/home/user/gi-tool/app/willkommen/bilder/handy-zustand.webp', 'Mängel antippen', 'Frist kommt<br>von selbst.', { art: 'handy', breite: 500, top: 640, drehen: -2 }), ueber: 'smoothleft' },
     { foto: F + 'abscheider-koaleszenz.jpg', dauer: 3.2, opt: { quer: 0.5, zoom: 0.0006 }, text: await geraet('a4.png', '/home/user/gi-tool/app/willkommen/bilder/handy-bemessung.webp', 'Bemessung', 'Mit<br>Rechenweg.', { art: 'handy', breite: 500, top: 640, drehen: 2 }), ueber: 'smoothleft' },
@@ -482,7 +482,7 @@ function clipSzene(clip, dauer, out, { start = 0, quer = 0.5, zoom = 0.0006, z0 
   let datei = String(clip).includes('/') ? join(root, clip) : join(root, 'material', 'clips', `${clip}.mp4`);
   if (!existsSync(datei) && String(clip).startsWith('material/umtec/')) datei = umtecDatei(String(clip).split('/').pop()) || datei;
   ff(['-stream_loop', '-1', '-ss', String(start), '-i', datei, '-frames:v', String(n), '-an', '-vf',
-    `${verpixelFilter(verpixeln)}setpts=PTS/${tempo},fps=${FPS},crop=ih*9/16:ih:(iw-ih*9/16)*${quer}:0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
+    `${verpixelFilter(verpixeln)}setpts=PTS/${tempo},fps=${FPS},crop='min(iw\\,ih*9/16)':ih:'(iw-min(iw\\,ih*9/16))*${quer}':0,scale=${W * 2}:${H * 2},zoompan=z='${z0}+${zoom}*on':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=${W}x${H}:fps=${FPS},${LOOK}${dunkel ? `,eq=brightness=-${dunkel}` : ''}${weich ? `,gblur=sigma=${weich}` : ''},${KORN},format=yuv420p`,
     '-c:v', 'libx264', '-crf', '17', '-preset', 'slow', join(tmp, out)]);
 }
 SZENEN.forEach((z, i) => z.clip !== undefined ? clipSzene(z.clip, z.dauer, `s${i}.mp4`, z.opt)
