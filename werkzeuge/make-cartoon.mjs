@@ -36,23 +36,27 @@ const FILME = {
       [25.8, 26.55, 27.3, 28.05].forEach((t, i) => G.ding(t, 1318 + i * 120)); G.regen(28.4, 2.6); G.zisch(28.5); G.posaune(29.9); G.jingle(34.05); },
   },
   abscheiderblick: {
-    laenge: 45.5, heute: 15.6, cover: 9.6, ende: 40.05,
-    bilder: { ordnung: gi('handy-ordnung'), zustand: gi('handy-zustand'), bemessung: gi('handy-bemessung'), dreid: gi('dreid'), bericht: gi('bericht-1'), pc: gi('pc-pruefung'), kunde: gi('pc-kunde') },
-    stimmen: { gerd: { pitch: 0.78, tempo: 1.05 }, kai: { pitch: 1.22, tempo: 1.12 } },
+    laenge: 53.5, fps: 24, heute: 21.0, cover: 8.0, ende: 48.0,
+    bilder: { dicht: 'material/screens/abscheider3d-dichtheit.jpg', zustand: gi('handy-zustand'), bemessung: gi('handy-bemessung'), bericht: gi('bericht-1'), pc: gi('pc-pruefung') },
+    stimmen: { gerd: { pitch: 0.78, tempo: 1.05 }, kai: { pitch: 1.22, tempo: 1.12 }, jule: { pitch: 1.42, tempo: 1.12 } },
     zeilen: [
-      [1.0, 'gerd', 'Generalinspektion. Hab alles dabei.'], [4.8, 'gerd', 'Tabelle eins. Tabelle zwei. Wo war die Formel?'],
-      [9.4, 'gerd', 'Akku leer. Neeein!'], [11.3, 'gerd', 'Nenngröße, Schlammfang, Fristen. Alles von Hand.'],
-      [15.9, 'kai', 'Schritt für Schritt, wie im B F R Bericht.', 'Schritt für Schritt, wie im BFR-Bericht.'],
-      [18.6, 'kai', 'Mangel antippen. Frist kommt von selbst.'], [21.4, 'kai', 'Bemessung? Rechnet er mir vor.'],
-      [24.2, 'kai', 'Laser dran, Bauwerk in 3 D. Dichtheit gleich mit.', 'Laser dran, Bauwerk in 3D. Dichtheit gleich mit.'],
-      [27.2, 'kai', 'Ein Knopf: Prüfbericht. Mit Fotos.'], [29.8, 'kai', 'Das Büro sieht es sofort. Den Rest mach ich auf der Couch.'],
-      [34.2, 'kai', 'Und in fünf Jahren erinnert er mich.'], [37.3, 'gerd', 'Fünf Jahre? Ich bin noch bei Tabelle drei.'],
+      [1.0, 'gerd', 'Generalinspektion. Erst mal Dichtheitsprüfung.'], [5.0, 'gerd', 'Sonde rein. Pegel ablesen. Aufschreiben.'],
+      [7.75, 'gerd', 'Zwei Komma vier drei eins. Oder drei vier zwei eins?', '2,431 … oder 3,421?'],
+      [10.8, 'gerd', 'Jetzt noch Dach, Hof, Abläufe, Zapfsäulen. Alles merken.'], [14.55, 'gerd', 'Wie groß war das Dach nochmal?'],
+      [16.6, 'gerd', 'Und abends alles in die Tabelle.'], [18.8, 'gerd', 'Akku leer. Neeein!'],
+      [21.6, 'kai', 'Sonde rein, Pegel eintragen. Die Wasserbilanz rechnet die App.'],
+      [27.0, 'kai', 'Messen, Laser, zack. Steht direkt in der Bemessung.'], [30.4, 'kai', 'Nichts merken. Kein Zettel.'],
+      [33.3, 'kai', 'Bemessung mit Rechenweg. Mängel mit Frist.'], [37.3, 'kai', 'Pause? Kein Problem.'],
+      [39.3, 'kai', 'Auf der Couch weitermachen. Abschließen. Fertig.'], [42.8, 'jule', 'Und das Büro hat den Bericht schon.'],
+      [45.4, 'gerd', 'Ich such noch die Dachfläche.'],
     ],
-    geraeusche: (G) => { G.tippen(0.3, 2.0); G.pop(2.5); G.saugen(4.5, 6.4); G.tippen(5.0, 3.0); [8.4, 8.8, 9.2].forEach((t) => G.piu(t)); G.posaune(9.9);
-      G.tippen(11.2, 3.2); G.ding(14.65, 1046); G.ding(14.75, 1568); G.saugen(15.6, 13.9);
-      [16.0, 18.8, 21.6, 24.4, 27.3].forEach((t) => G.pop(t)); G.klick(19.2); G.ding(19.35); G.ding(22.1, 1568); G.piu(24.35); G.ding(24.9);
-      G.zisch(27.3); G.klonk(28.05); [30.4, 31.6, 32.8].forEach((t, i) => G.ding(t, 1318 + i * 160)); [35.7, 36.0, 36.3, 36.6].forEach((t) => G.ding(t, 2093));
-      G.zisch(37.0); G.posaune(38.6); G.jingle(40.05); [40.6, 40.85, 41.1, 41.35, 41.6, 41.85, 42.1].forEach((t) => G.klick(t)); },
+    geraeusche: (G) => { G.motor(0, 2.4); G.bremse(2.3); G.klonk(4.6); G.saugen(5.3, 0.9); G.piu(6.5); G.kritzeln(6.7, 1.0); G.pop(7.4);
+      [10.9, 12.0, 13.0, 13.9, 14.8].forEach((t) => G.pop(t)); G.tippen(16.4, 2.2); [18.0, 18.2, 18.4].forEach((t) => G.piu(t)); G.posaune(19.0);
+      G.ding(20.05, 1046); G.ding(20.15, 1568); G.motor(21.0, 1.6); G.klonk(21.3); G.bremse(22.5); G.pop(22.6); G.zisch(23.6); G.ding(24.8);
+      G.piu(27.2); [27.9, 29.1, 30.3, 31.3, 32.3].forEach((t, i) => G.ding(t, 1175 + i * 120)); G.pop(33.0); G.ding(33.8, 1568); G.pop(35.3);
+      G.ding(37.4, 1318); G.motor(38.0, 0.8); G.pop(38.8); G.pop(39.0); [39.7, 40.1, 40.5, 40.9].forEach((t) => G.klick(t)); G.zisch(41.3); G.klonk(41.8);
+      G.pop(42.5); G.ding(43.0, 1318); G.ding(43.8, 1568); G.zisch(45.0); G.posaune(46.4); G.jingle(48.0);
+      [48.5, 48.72, 48.94, 49.16, 49.38, 49.6, 49.82, 50.04].forEach((t) => G.klick(t)); },
   },
 };
 FILME.spuelblick = {
