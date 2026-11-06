@@ -13,7 +13,7 @@ const { chromium } = require(require.resolve('playwright', { paths: [execSync('n
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const tmp = mkdtempSync(join(tmpdir(), 'sb-cartoon-'));
-const W = 1080, H = 1920, FPS = 12, SR = 44100;
+const W = 1080, H = 1920, SR = 44100;
 const ff = (args) => execFileSync('ffmpeg', ['-y', '-v', 'error', ...args], { stdio: 'inherit' });
 const dauer = (f) => parseFloat(execFileSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', f]).toString());
 
@@ -55,9 +55,31 @@ const FILME = {
       G.zisch(37.0); G.posaune(38.6); G.jingle(40.05); [40.6, 40.85, 41.1, 41.35, 41.6, 41.85, 42.1].forEach((t) => G.klick(t)); },
   },
 };
+FILME.spuelblick = {
+  laenge: 49.5, fps: 24, heute: 20.4, cover: 7.5, ende: 44.8,
+  bilder: { liste: '/home/user/spuelblick/app/start/bilder/liste-960.webp', grad: '/home/user/spuelblick/app/start/bilder/grad-960.webp', projekte: 'material/screens/spuelblick-projekte.jpg' },
+  stimmen: { udo: { pitch: 0.8, tempo: 1.05 }, jule: { pitch: 1.42, tempo: 1.12 }, kai: { pitch: 1.22, tempo: 1.12 }, ag: { pitch: 0.95, tempo: 1.0 } },
+  zeilen: [
+    [3.2, 'udo', 'Haltung zwölf. Los gehts.', 'Haltung zwölf. Los geht’s.'],
+    [6.3, 'udo', 'Haltung, Länge, D N, Verschmutzung, Gänge, Düse.', 'Haltung, Länge, DN, Verschmutzung, Gänge, Düse …'],
+    [9.85, 'udo', 'Und das für jede Haltung.'], [12.2, 'udo', 'Mist. Drei null null oder acht null null?', 'Mist. 300 oder 800?'],
+    [15.5, 'jule', 'Welche Haltung ist das? Und wo ist das Foto?'], [18.0, 'ag', 'Wie weit seid ihr denn?'],
+    [22.6, 'kai', 'Projekt offline. Karte ist drauf.'], [24.6, 'kai', 'Funkloch? Egal.'],
+    [27.6, 'kai', 'Grad antippen, Fotos rein, speichern. Nächste!'], [31.6, 'kai', 'Tag beenden. Aufmaß steht.'],
+    [34.8, 'jule', 'Ich seh, was draußen läuft. Bericht? Ein Klick.'], [39.0, 'ag', 'Endlich seh ich selbst, wie weit ihr seid.'],
+    [42.4, 'udo', 'Gebt mir auch so ein Ding!'],
+  ],
+  geraeusche: (G) => { G.motor(0, 2.6); G.bremse(2.5); G.klonk(2.85); G.saugen(5.0, 0.9); G.wasser(5.8, 5.2); G.kritzeln(6.6, 3.0);
+    [9.5, 9.72, 9.94, 10.16, 10.38, 10.6].forEach((t) => G.klick(t)); G.regen(11, 4); G.zisch(12.4);
+    [15.3, 15.55, 15.8, 16.05].forEach((t) => G.ding(t, 2093)); G.tippen(15.2, 2.0); G.ring(17.2, 2.0); G.ding(19.45, 1046); G.ding(19.55, 1568);
+    G.motor(20.4, 1.6); G.bremse(21.9); G.pop(22.4); G.saugen(23.4, 0.7); G.wasser(24, 7.4); G.pop(24.2);
+    [28.3, 28.6, 28.9].forEach((t) => G.klick(t)); [29.4, 29.65, 29.9, 30.15, 30.4, 30.65].forEach((t) => G.blitz(t));
+    [31.8, 32.15, 32.5, 32.85, 33.2, 33.55].forEach((t, i) => G.ding(t, 1046 + i * 110)); G.pop(34.5); [35.4, 35.75, 36.1, 36.45].forEach((t) => G.pop(t));
+    G.zisch(36.9); G.pop(38.8); G.ding(41.0, 1568); G.pop(43.4); G.ding(43.6); G.jingle(44.8); [45.3, 45.52, 45.74, 45.96, 46.18, 46.4, 46.62, 46.84].forEach((t) => G.klick(t)); },
+};
 const CFG = FILME[FILM]; if (!CFG) throw new Error(`Unbekannter Film „${FILM}“ (${Object.keys(FILME).join(', ')})`);
 const ziel = join(root, 'reels', `cartoon-${FILM}.mp4`);
-const LAENGE = CFG.laenge, ZEILEN = CFG.zeilen, STIMME = CFG.stimmen;
+const LAENGE = CFG.laenge, ZEILEN = CFG.zeilen, STIMME = CFG.stimmen, FPS = CFG.fps || 12;
 const PIPER = process.env.PIPER_BIN || 'piper';
 const MODELL = process.env.PIPER_MODEL || join(root, '.cache', 'piper', 'de_DE-thorsten-high.onnx');
 const SPRECHEN = [], UT = [], STIMMEN = [];
@@ -92,6 +114,10 @@ const G = {
   regen: (a, d) => { const lp = tp(0.5); add(a, d, () => lp(rnd()), 0.18); },
   zisch: (a) => { const lp = tp(0.6); add(a, 0.5, (t) => lp(rnd()) * Math.sin(Math.PI * t / 0.5), 0.35); },
   posaune: (a) => [392, 370, 349, 311].forEach((f, i) => add(a + i * 0.42, i === 3 ? 1.1 : 0.4, (t) => saw((f + (i === 3 ? 6 * Math.sin(2 * Math.PI * 6 * t) : 0)) * t) * Math.min(1, t / 0.03) * (i === 3 ? Math.exp(-t * 1.5) : 1), 0.09)),
+  bremse: (a) => add(a, 0.5, (t) => Math.sin(2 * Math.PI * (2600 - 900 * t) * t) * Math.exp(-t * 4), 0.06),
+  wasser: (a, d) => { let y = 0; add(a, d, () => { const x = rnd(); const h = x - y; y = x; return h; }, 0.12); },
+  kritzeln: (a, d) => { for (let t = 0; t < d; t += 0.18) { const lp = tp(0.5); add(a + t, 0.12, (u) => lp(rnd()) * Math.sin(Math.PI * u / 0.12), 0.25); } },
+  ring: (a, d) => { for (let t = 0; t < d; t += 0.5) [440, 480].forEach((f) => note(a + t, f, 0.4, Math.sin, 0.08, 0.005)); },
   saugen: (a, d) => { const lp = tp(0.08); add(a, d, (t) => lp(rnd()) * (0.7 + 0.3 * Math.sin(2 * Math.PI * 1.3 * t)) * 2.2 * Math.min(1, t / 0.4, (d - t) / 0.4), 0.22); },
   jingle: (a) => [523, 659, 784, 1046].forEach((f, i) => { note(a + i * 0.13, f, 0.6, tri, 0.18); }),
 };

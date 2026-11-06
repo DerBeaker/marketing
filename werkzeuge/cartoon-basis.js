@@ -8,18 +8,22 @@ let F = 0;
 const zuf = (s) => { const x = Math.sin(F * 12.9898 + s * 78.233) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
 const kl = (t, a, b) => Math.max(0, Math.min(1, (t - a) / (b - a)));
 const li = (a, b, u) => a + (b - a) * u;
+const weich = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u));               // sanft an und aus
+const raus = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : 1 - Math.pow(1 - u, 3));            // schnell rein, sanft bremsen
+const federn = (u) => (u <= 0 ? 0 : u >= 1 ? 1 : 1 + 2.2 * Math.pow(u - 1, 3) + 1.2 * Math.pow(u - 1, 2)); // leicht überschießen
+const rein = (t, a, d = 0.5, f = raus) => f(kl(t, a, a + d));                       // 0 → 1 ab Zeit a
 const spricht = (wer, t) => (window.SPRECHEN || []).some((s) => s.wer === wer && t >= s.a && t <= s.e);
 const boil = (s, st = 0.7) => `rotate(${(zuf(s) * st).toFixed(2)})`;
 
 // ---- Figuren (Ursprung = zwischen den Füßen)
 function figur(o) {
   const { x, y, s = 1, typ = 'horst', mund = 0, augen = 'normal', a1 = 8, a2 = -8, h1 = '', h2 = '', dreh = 0, blick = 0,
-    bart = true, brille = false, schweiss = false, beine = 0, traurig = false, kleidung = '', lesebrille = false } = o;
+    bart = true, brille = false, schweiss = false, beine = 0, traurig = false, kleidung = '', lesebrille = false, helm: mitHelm = true } = o;
   const Ho = typ === 'horst';
-  const Ka = typ === 'kai', OR = kleidung === 'orange';
+  const Ka = typ === 'kai', OR = kleidung === 'orange', AZ = kleidung === 'anzug';
   const haut = Ho ? '#f0c49a' : Ka ? '#e9b98f' : '#f8d4b4';
-  const weste = OR ? (Ho ? '#e8641c' : '#ff6a13') : Ho ? '#e2742a' : '#c9e23b', streifen = OR ? '#d9dde3' : Ho ? '#a9a9a9' : '#f4f4f4';
-  const helm = Ho ? '#f0c018' : '#ffffff', hose = OR ? (Ho ? '#d95a16' : '#f2600f') : Ho ? '#384767' : '#2c3754';
+  const weste = AZ ? '#2b3a55' : OR ? (Ho ? '#e8641c' : '#ff6a13') : Ho ? '#e2742a' : '#c9e23b', streifen = AZ ? 'none' : OR ? '#d9dde3' : Ho ? '#a9a9a9' : '#f4f4f4';
+  const helm = Ho ? '#f0c018' : '#ffffff', hose = AZ ? '#222b3d' : OR ? (Ho ? '#d95a16' : '#f2600f') : Ho ? '#384767' : '#2c3754';
   const arm = (xs, ang, hand) => `<g transform="translate(${xs},-228) rotate(${ang})"><rect x="-18" y="0" width="36" height="118" rx="16" fill="${weste}"/>
     <circle cx="0" cy="128" r="25" fill="${haut}"/><g transform="translate(0,128) rotate(${-ang})">${hand}</g></g>`;
   const bl = beine ? 18 : 0;
@@ -50,7 +54,9 @@ function figur(o) {
     <path d="M-118,-58 L-102,-238 Q0,-258 102,-238 L118,-58 Z" fill="${weste}"/>
     <rect x="-108" y="-160" width="216" height="17" fill="${streifen}"/><rect x="-112" y="-112" width="224" height="17" fill="${streifen}"/>
     ${zopf}<circle cx="0" cy="-370" r="150" fill="${haut}"/>
-    <path d="M-142,-405 A142,128 0 0 1 142,-405 Z" fill="${helm}"/><rect x="-168" y="-416" width="336" height="24" rx="12" fill="${helm}"/>
+    ${mitHelm ? `<path d="M-142,-405 A142,128 0 0 1 142,-405 Z" fill="${helm}"/><rect x="-168" y="-416" width="336" height="24" rx="12" fill="${helm}"/>`
+      : `<path d="M-140,-420 Q-120,-525 0,-522 Q120,-525 140,-420 Q80,-470 0,-468 Q-80,-470 -140,-420Z" fill="${Ho ? '#8a8a8a' : '#5a3418'}"/>`}
+    ${AZ ? `<path d="M-30,-240 L0,-170 L30,-240Z" fill="#fff"/><path d="M-10,-232 L10,-232 L14,-140 L0,-120 L-14,-140Z" fill="#c0392b"/>` : ''}
     ${gesicht}${schnauz}${m}
     ${schweiss ? `<path d="M150,-440 q14,26 0,36 q-14,-10 0,-36z" fill="#59b6f0"/>` : ''}
     ${arm(-104, a1, h1)}${arm(104, a2, h2)}</g>`;
@@ -129,7 +135,7 @@ const haken = (x, y, s = 1) => `<g transform="translate(${x},${y}) scale(${s})">
 const ALT = `<filter id="alt"><feColorMatrix type="matrix" values="0.55 0.35 0.1 0 0.04  0.45 0.45 0.1 0 0.02  0.35 0.35 0.2 0 0  0 0 0 1 0"/></filter>`;
 
 window.zeichne = (t, f) => {
-  F = f;
+  F = Math.floor(t * 12 + 1e-6);
   const papier = `<filter id="pap"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="${f % 4}"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .4  0 0 0 0 .32  0 0 0 .13 0"/></filter>`;
   document.getElementById('s').innerHTML = `<defs>${ALT}${papier}</defs>${window.SZENE(t)}${untertitel(t)}<rect width="${W}" height="${H}" filter="url(#pap)"/>`;
 };
