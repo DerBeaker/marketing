@@ -39,18 +39,21 @@ Alle 2–3 Tage ein Beitrag: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026). 
 | Sa 07.11. | 10:00 | Reel + Musik | Schachtblick | Echte Schächte (UMTEC-Material) → Handy: Foto/Anschlüsse, Befunde, 3D-Aufbau (06.11. neu, ohne Sprecher) | reel-schachtblickumtec.mp4 | eingeplant |
 | Mo 09.11. | 18:00 | Reel + Musik | MMSE | Stollen, Spülen, Schacht, Tankstelle, Dichtheitsprüfung → alle vier Apps im Gerät (06.11. neu, ohne Sprecher) | reel-mmseumtec.mp4 | eingeplant |
 | Mi 11.11. | 18:00 | Reel + Musik | Abscheider 3D | Dichtheitsprüfung (Absperrung, Stativ, Pegel) → Modell, Anhang A (06.11. neu, ohne Sprecher) | reel-abscheider3dumtec.mp4 | eingeplant |
+| Do 12.11. | 18:00 | Story (Trickfilm, mit Ton) | AbscheiderBlick | Früher Excel und leerer Akku an der Tankstelle vs. AbscheiderBlick mit allen Funktionen (orange Warnschutz) | cartoon-abscheiderblick.mp4 | eingeplant |
 | Sa 14.11. | 10:00 | Reel + Musik | SpülBlick | Einsatz: Schacht, Hochdruck, Kolonne → Handy/Tablet mit SpülBlick, „Schluss mit Zetteln abtippen“, 14 Tage testen (05.11. neu mit echtem UMTEC-Material, Logos/Kennzeichen verpixelt, ohne Sprecher) | reel-spuelblickumtec.mp4 | eingeplant |
 | Mo 16.11. | 18:00 | Reel + Musik | AbscheiderBlick | Tankstelle 6 Uhr, leerer Abscheider, Schwimmer → Mängel, Bemessung, Prüfbericht (06.11. neu, ohne Sprecher) | reel-abscheiderblickumtec.mp4 | eingeplant |
 | Mi 18.11. | 18:00 | Reel + Musik | Abscheider 3D | Bauwerksaufnahme an der Tankstelle → Längsschnitt, Draufsicht (06.11. neu, ohne Sprecher) | reel-abscheider3dumtec2.mp4 | eingeplant |
+| Do 19.11. | 18:00 | Story | SpülBlick | „Funkloch? Egal.“ → Offline-Karte, 14 Tage testen | reel-storyspuelblick.mp4 | eingeplant |
 | Sa 21.11. | 10:00 | Reel + Musik | SpülBlick | Neue Baustelle → Offline-Karte, Fotos, Bericht im Büro, „Deine Kolonne. Dein Bericht.“ (05.11. neu mit echtem UMTEC-Material, Logos/Kennzeichen verpixelt, ohne Sprecher) | reel-spuelblickumtec2.mp4 | eingeplant |
-| Mo 23.11. | 18:00 | Reel | Schachtblick | 60-s-Werbevideo (von Manuel) | promo-60s.mp4 | eingeplant |
-| Mi 25.11. | 18:00 | Reel + Sprecher | AbscheiderBlick oder Abscheider 3D | neu mit echten Clips | – | Automatik (So 22.11.) |
+| Mo 23.11. | 18:00 | Reel (Trickfilm, mit Ton) | Schachtblick | Früher vs. heute: Zettel, Zollstock, Abtippen vs. Foto, Laser, KI (Pro) – ersetzt das 60-s-Video (für Dezember vorgemerkt) | cartoon-schachtblick.mp4 | eingeplant |
+| Di 24.11. | 18:00 | Story (Trickfilm) | Schachtblick | derselbe Trickfilm als Story | cartoon-schachtblick.mp4 | eingeplant |
+| Mi 25.11. | 18:00 | Karussell oder Reel | AbscheiderBlick oder Abscheider 3D | neu (Karussell-Woche: eines von 25./28.11. als Karussell) | – | Automatik (So 22.11.) |
 | Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik (So 22.11.) |
 | Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik (So 29.11.) |
 
 Gewichtung (Manuel, 04.11.2026): **nicht Schachtblick-lastig** – die letzten Wochen liefen fast nur Schachtblick. Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick.
 
-12 Termine im November: 9 eingeplant (in Metricool am 04.11. geprüft: alle PENDING, `draft: false`, `autoPublish: true`), 3 für die Automatik. Obergrenze 18.
+November: 12 Feed-Termine + 3 Storys (12., 19., 24.11.) = 15, Obergrenze 18. Ab 06.11.2026 (Manuel): jede Woche 1 Story zusätzlich und 1 Karussell statt eines Reels.
 
 ## Reels erzeugen
 

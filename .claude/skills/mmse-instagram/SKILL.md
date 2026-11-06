@@ -83,9 +83,10 @@ Manuel will Reels, die wie ein Kinotrailer anfangen: echte Menschen, echte Orte 
 
 ## Rhythmus und Rotation
 
-Manuel (04.11.2026): **alle 2–3 Tage ein Beitrag reicht** – genau 3 Termine pro Woche: **Montag 18:00, Mittwoch 18:00, Samstag 10:00**, nicht mehr. Was dort schon eingeplant ist, bleibt; nur freie Termine füllen.
+Manuel (04.11.2026, ergänzt 06.11.2026): **3 Feed-Termine pro Woche: Montag 18:00, Mittwoch 18:00, Samstag 10:00**, dazu **1 Story pro Woche** (Dienstag oder Donnerstag 18:00). Was schon eingeplant ist, bleibt; nur freie Termine füllen.
 
-- **Format:** überwiegend Reels mit Sprecher und echten Clips; höchstens 1 Story oder Karussell pro Woche anstelle eines Reels.
+- **Format (Manuel, 06.11.2026: nicht nur Reels):** pro Woche 2 Reels + **1 Karussell** (statt eines Reels, z. B. echte Einsatzfotos oder „Früher vs. heute“ als Bilderfolge) + **1 Story** zusätzlich (Trickfilm, kurzer Einsatzclip mit App, Link-Sticker setzt Manuel). Reels ohne Sprecher mit Musik; Trickfilme bringen eigenen Ton mit.
+- **Monatslimit beachten:** 4 Beiträge/Woche ≈ 17 im Monat, Grenze 18 – in Monaten mit 5 Wochen eher eine Story weglassen.
 - **Gewichtung: nicht Schachtblick-lastig** (Manuel, 04.11.2026; im Oktober lief fast nur Schachtblick). Pro Woche **höchstens 1 Schachtblick-Beitrag**, die anderen Termine gehen an AbscheiderBlick, Abscheider 3D und SpülBlick.
 - **Rotation:** jede Woche mindestens ein Abscheider-Beitrag (AbscheiderBlick und Abscheider 3D abwechselnd oder beide), SpülBlick höchstens 1 pro Woche (seit 04.11.2026 online, Ziel: Registrierungen zum Test; immer Einsatz-Clips vom Spülfahrzeug/Kanal mit Tablet oder Handy im Bild; Blickwinkel wechseln: Zettel/WhatsApp abtippen, Karte im Funkloch, Erfassung mit Handschuhen, Bericht fürs Büro, Auftraggeber-Zugang), dazwischen gelegentlich ein MMSE-Überblick über alle Apps. Nicht zweimal hintereinander dieselbe App.
 - **Keine Wiederholung:** Themen und Reels, die schon liefen oder eingeplant sind (`REDAKTIONSPLAN.md`), nicht noch einmal; lieber ein neues Reel aus anderen Clips und einem anderen Nutzen.
