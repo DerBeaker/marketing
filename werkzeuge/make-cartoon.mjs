@@ -41,8 +41,8 @@ const FILME = {
     stimmen: { gerd: { pitch: 0.78, tempo: 1.05 }, kai: { pitch: 1.22, tempo: 1.12 }, jule: { pitch: 1.42, tempo: 1.12 } },
     zeilen: [
       [1.0, 'gerd', 'Generalinspektion. Erst mal Dichtheitsprüfung.'], [5.0, 'gerd', 'Sonde rein. Pegel ablesen. Aufschreiben.'],
-      [7.75, 'gerd', 'Zwei Komma vier drei eins. Oder drei vier zwei eins?', '2,431 … oder 3,421?'],
-      [10.8, 'gerd', 'Jetzt noch Dach, Hof, Abläufe, Zapfsäulen. Alles merken.'], [14.55, 'gerd', 'Wie groß war das Dach nochmal?'],
+      [8.1, 'gerd', 'Zwei Komma vier drei eins. Oder drei vier zwei eins?', '2,431 … oder 3,421?'],
+      [11.3, 'gerd', 'Jetzt noch Dach, Hof, Abläufe, Zapfsäulen. Alles merken.'], [15.0, 'gerd', 'Wie groß war das Dach?'],
       [16.6, 'gerd', 'Und abends alles in die Tabelle.'], [18.8, 'gerd', 'Akku leer. Neeein!'],
       [21.6, 'kai', 'Sonde rein, Pegel eintragen. Die Wasserbilanz rechnet die App.'],
       [27.0, 'kai', 'Messen, Laser, zack. Steht direkt in der Bemessung.'], [30.4, 'kai', 'Nichts merken. Kein Zettel.'],
@@ -90,11 +90,13 @@ const SPRECHEN = [], UT = [], STIMMEN = [];
 ZEILEN.forEach(([t, wer, text, ut], i) => {
   const roh = join(tmp, `z${i}-roh.wav`), wav = join(tmp, `z${i}.wav`), { pitch, tempo } = STIMME[wer];
   execFileSync(PIPER, ['-m', MODELL, '-f', roh, '--length_scale', '0.92'], { input: text.replace(/Spülblick/g, 'Spühlblick'), stdio: ['pipe', 'ignore', 'ignore'] });
-  ff(['-i', roh, '-af', `asetrate=22050*${pitch},aresample=${SR},atempo=${(tempo / pitch).toFixed(4)},highpass=f=90,acompressor=threshold=-18dB:ratio=3,volume=2.4`, '-ac', '1', wav]);
-  const d = dauer(wav);
-  SPRECHEN.push({ wer, a: t, e: t + d - 0.1 }); UT.push({ a: t - 0.1, e: t + d + 0.35, text: ut || text }); STIMMEN.push({ wav, t });
+  const vertonen = (schneller) => { ff(['-i', roh, '-af', `asetrate=22050*${pitch},aresample=${SR},atempo=${(tempo * schneller / pitch).toFixed(4)},highpass=f=90,acompressor=threshold=-18dB:ratio=3,volume=2.4`, '-ac', '1', wav]); return dauer(wav); };
+  let d = vertonen(1), schneller = 1;
+  // piper spricht bei jedem Lauf etwas anders lang: passt ein Satz nicht vor den nächsten, wird er (höchstens 30 %) schneller gesprochen
   const naechste = ZEILEN[i + 1]?.[0];
-  console.log(`   ${t.toFixed(1)}s ${wer}: „${text}“ ${d.toFixed(2)} s${naechste && t + d > naechste ? '  ⚠ überlappt' : ''}`);
+  if (naechste && t + d > naechste - 0.12) { schneller = Math.min(1.3, d / (naechste - 0.12 - t)); d = vertonen(schneller); }
+  SPRECHEN.push({ wer, a: t, e: t + d - 0.1 }); UT.push({ a: t - 0.1, e: t + d + 0.35, text: ut || text }); STIMMEN.push({ wav, t });
+  console.log(`   ${t.toFixed(1)}s ${wer}: „${text}“ ${d.toFixed(2)} s${schneller > 1 ? ` (×${schneller.toFixed(2)} schneller)` : ''}${naechste && t + d > naechste ? '  ⚠ überlappt' : ''}`);
 });
 
 // ---- Geräusche und Musik (mono, 44,1 kHz) direkt berechnet
