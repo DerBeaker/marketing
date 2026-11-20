@@ -404,6 +404,30 @@ const REELS = {
     { foto: F + 'stativ-schacht.jpg', dauer: 2.8, opt: { quer: 0.5, zoom: 0.0005 }, text: await geraet('m5.png', 'material/screens/abscheider3d-modell.jpg', 'Abscheider 3D', 'Bauwerk<br>in 3D.', { art: 'tablet', breite: 940, top: 860, drehen: 2, th: THEMEN.abscheider3d }), ueber: 'fadeblack' },
     { bild: await endkarte('Ein Account.<br>Vier Apps.', { unter: 'im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
+  // ---- Dezember 2026 (geplant am 20.11.): weitere Einsätze aus dem UMTEC-Material, ohne Sprecher
+  abscheider3dumtec3: async () => { TH = THEMEN.abscheider3d; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20250403-WA0000.mp4', dauer: 2.4, opt: { start: 31, zoom: 0.0008 }, text: await png('k1.png', text('Baugrube', 'Aufmaß<br>vor Ort.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0018.mp4', dauer: 2.4, opt: { start: 2, zoom: 0.0009 }, text: await png('k2.png', text('Abscheider', 'Jedes Maß<br>zählt.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0019.mp4', dauer: 3.2, opt: { start: 25, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('k3.png', 'material/screens/abscheider3d-modell.jpg', 'Abscheider 3D', 'Bemaßtes<br>3D-Modell.', { art: 'tablet', breite: 940, top: 840, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250403-WA0000.mp4', dauer: 3.2, opt: { start: 76, zoom: 0.0005, dunkel: 0.06, weich: 2 }, text: await geraet('k4.png', 'material/screens/abscheider3d-schnitt.jpg', 'Auf Knopfdruck', 'Längsschnitt<br>und Draufsicht.', { art: 'tablet', breite: 960, top: 880, drehen: 2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  schachtblickumtec2: async () => { TH = THEMEN.schachtblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20241219-WA0003.mp4', dauer: 2.4, opt: { start: 1, zoom: 0.0009 }, text: await png('q1.png', text('Schacht auf', 'Was steckt<br>drin?')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250109-WA0028.mp4', dauer: 2.4, opt: { start: 3, zoom: 0.0009 }, text: await png('q2.png', text('Wurzeleinwuchs', 'Gefunden.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0025.mp4', dauer: 3.2, opt: { start: 5, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('q3.png', 'app-foto.jpg', 'Foto von oben', 'Anschlüsse<br>antippen.', { art: 'handy', breite: 520, top: 640, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250109-WA0011.mp4', dauer: 3.2, opt: { start: 2, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('q4.png', 'app-befunde.jpg', 'Kodieren', 'Zustandsklasse<br>sofort.', { art: 'handy', breite: 520, top: 640, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0027.mp4', dauer: 3.2, opt: { start: 5, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('q5.png', 'app-ki.jpg', 'Nur in Schachtblick Pro', 'KI schlägt vor.<br>Du prüfst.', { art: 'handy', breite: 520, top: 640, drehen: -2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Schachtinspektion.<br>Kostenlos im Browser.', { unter: 'KI-Vorschläge nur in Schachtblick Pro', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  spuelblickumtec3: async () => { TH = THEMEN.spuelblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20250326-WA0003.mp4', dauer: 2.4, opt: { start: 1.5, zoom: 0.0009 }, text: await png('w1.png', text('22 Uhr', 'Notdienst.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250509-WA0011.mp4', dauer: 2.4, opt: { start: 6, zoom: 0.0009 }, text: await png('w2.png', text('Absperren', 'Schlauch<br>raus.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20240724-WA0012.mp4', dauer: 2.4, opt: { start: 10, zoom: 0.0009 }, text: await png('w3.png', text('Und dann', 'Rein in den<br>Schacht.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0029.mp4', dauer: 3.2, opt: { start: 5, zoom: 0.0005, dunkel: 0.05, weich: 2 }, text: await geraet('w4.png', sbBild('liste-960.webp'), 'SpülBlick', 'Haltung<br>antippen.', { art: 'handy', breite: 600, top: 760, drehen: -3 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250506-WA0023.mp4', dauer: 3.2, opt: { start: 30, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('w5.png', 'material/screens/spuelblick-erfassen.jpg', 'Erfassen', 'Auch tief<br>im Kanal.', { art: 'tablet', breite: 980, top: 860, drehen: 2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Deine Haltungen.<br>Dein Bericht.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
   // ---- Storys (9:16, ca. 9 s, ohne Ton; Link-Sticker setzt Manuel in der Instagram-App)
   storyabscheider: async () => { TH = THEMEN.abscheiderblick; const F = 'material/umtec/_reel/'; return [
     { foto: F + 'tankstelle-tag.jpg', dauer: 2.6, opt: { quer: 0.12, zoom: 0.0009 }, text: await png('sa1.png', text('Wusstest du?', 'Alle 5 Jahre<br>General-<br>inspektion.')), ueber: 'smoothleft' },

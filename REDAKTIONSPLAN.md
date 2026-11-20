@@ -47,13 +47,28 @@ Feed: Mo 18:00, Mi 18:00, Sa 10:00 (Manuel, 04.11.2026), davon 1 Karussell pro W
 | Sa 21.11. | 10:00 | Reel + Musik | SpülBlick | Neue Baustelle → Offline-Karte, Fotos, Bericht im Büro, „Deine Kolonne. Dein Bericht.“ (05.11. neu mit echtem UMTEC-Material, Logos/Kennzeichen verpixelt, ohne Sprecher) | reel-spuelblickumtec2.mp4 | eingeplant |
 | Mo 23.11. | 18:00 | Reel (Trickfilm, mit Ton) | Schachtblick | Früher vs. heute: Zettel, Zollstock, Abtippen vs. Foto, Laser, KI (Pro) – ersetzt das 60-s-Video (für Dezember vorgemerkt) | cartoon-schachtblick.mp4 | eingeplant |
 | Di 24.11. | 18:00 | Story (Trickfilm) | Schachtblick | derselbe Trickfilm als Story | cartoon-schachtblick.mp4 | eingeplant |
-| Mi 25.11. | 18:00 | Karussell oder Reel | AbscheiderBlick oder Abscheider 3D | neu (Karussell-Woche: eines von 25./28.11. als Karussell) | – | Automatik (So 22.11.) |
-| Sa 28.11. | 10:00 | Reel + Sprecher | SpülBlick oder MMSE | neu | – | Automatik (So 22.11.) |
-| Mo 30.11. | 18:00 | Reel + Sprecher | Abscheider-App | neu | – | Automatik (So 29.11.) |
+| Mi 25.11. | 18:00 | Karussell (7) | AbscheiderBlick | Generalinspektion an der Tankstelle in 5 Schritten (echte Fotos + App-Screens) | posts/abscheiderblick_gi/ | eingeplant |
+| Sa 28.11. | 10:00 | Reel (Trickfilm, mit Ton) | SpülBlick | Trickfilm Früher vs. heute (lief am 19.11. nur als Story) | cartoon-spuelblick.mp4 | eingeplant |
+| Mo 30.11. | 18:00 | Reel + Musik | Abscheider 3D | Aufmaß an der Baugrube, Abscheider von innen → 3D-Modell, Längsschnitt | reel-abscheider3dumtec3.mp4 | eingeplant |
 
 Gewichtung (Manuel, 04.11.2026): **nicht Schachtblick-lastig** – die letzten Wochen liefen fast nur Schachtblick. Schachtblick höchstens 1 von 3 Beiträgen, Vorrang für AbscheiderBlick, Abscheider 3D und SpülBlick.
 
-November: 12 Feed-Termine + 3 Storys (12., 19., 24.11.) = 15, Obergrenze 18. Ab 06.11.2026 (Manuel): jede Woche 1 Story zusätzlich und 1 Karussell statt eines Reels.
+November: 15 Feed-Termine + 3 Storys (12., 19., 24.11.) = 18 (Obergrenze erreicht). Ab 06.11.2026 (Manuel): jede Woche 1 Story zusätzlich und 1 Karussell statt eines Reels.
+
+## Dezember 2026 (geplant am 20.11.)
+
+| Tag | Zeit | Format | App | Inhalt | Datei | Status |
+|---|---|---|---|---|---|---|
+| Mi 02.12. | 18:00 | Reel + Musik | Schachtblick | Schacht auf, Wurzeleinwuchs → Foto/Anschlüsse, Kodieren, KI-Vorschläge (nur Pro) | reel-schachtblickumtec2.mp4 | eingeplant |
+| Do 03.12. | 18:00 | Story | SpülBlick | „Funkloch? Egal.“ → Offline-Karte, 14 Tage testen | reel-storyspuelblick.mp4 | eingeplant |
+| Sa 05.12. | 10:00 | Karussell (6) | MMSE | Abwasser ist unser Alltag – vier Apps | posts/mmse_apps/ | eingeplant |
+| Mo 07.12. | 18:00 | Reel (Trickfilm, mit Ton) | AbscheiderBlick | Trickfilm Früher vs. heute (lief am 12.11. nur als Story) | cartoon-abscheiderblick.mp4 | eingeplant |
+| Mi 09.12. | 18:00 | Reel + Musik | SpülBlick | 22 Uhr Notdienst, Schlauch raus, rein in den Schacht → Haltung antippen, erfassen im Kanal | reel-spuelblickumtec3.mp4 | eingeplant |
+| Do 10.12. | 18:00 | Story | MMSE | Ein Account, vier Apps (Reel vom 09.11. als Story) | reel-mmseumtec.mp4 | eingeplant |
+| Sa 12.12. | 10:00 | Karussell (6) | Abscheider 3D | Dichtheitsprüfung ohne Zettelkram in 4 Schritten | posts/abscheider3d_dicht/ | eingeplant |
+| Mo 14.12. | 18:00 | – | – | ab hier Sonntagsplanung (läuft seit 20.11. in Manuels Sitzung mit Repo-Zugriff) | – | Automatik |
+
+Dezember bis 13.12.: 7 Beiträge (5 Feed + 2 Storys). Vorgemerkt: Manuels 60-s-Video.
 
 ## Reels erzeugen
 
