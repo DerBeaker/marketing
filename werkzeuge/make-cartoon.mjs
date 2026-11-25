@@ -66,8 +66,8 @@ FILME.spuelblick = {
   stimmen: { udo: { pitch: 0.8, tempo: 1.05, ref: 'manuel', ex: 1.1 }, jule: { pitch: 1.42, tempo: 1.12, ref: 'frau', ex: 0.8 }, kai: { pitch: 1.22, tempo: 1.12, ref: 'mann', ex: 0.85, cbPitch: 1.06 }, ag: { pitch: 0.95, tempo: 1.0, ref: 'mann', ex: 0.6, cbPitch: 0.9 } },
   zeilen: [
     [3.2, 'udo', 'Haltung zwölf. Vamos!'],
-    [6.3, 'udo', 'Haltung, Länge, De Enn, Verschmutzung, Gänge, Düse.', 'Haltung, Länge, DN, Verschmutzung, Gänge, Düse …'],
-    [9.85, 'udo', 'Und das für jede Haltung.'], [12.2, 'udo', 'Ay, caramba! Dreihundert oder achthundert?', 'Ay, caramba! 300 oder 800?'],
+    [6.3, 'udo', 'Haltung, Länge, De Enn, Gänge, Düse.', 'Haltung, Länge, DN, Gänge, Düse …'],
+    [9.85, 'udo', 'Und das für jede Haltung.'], [12.2, 'udo', 'Caramba! Dreihundert oder achthundert?', 'Caramba! 300 oder 800?'],
     [15.5, 'jule', 'Welche Haltung ist das? Und wo ist das Foto?'], [18.0, 'ag', 'Wie weit seid ihr denn?'],
     [22.6, 'kai', 'Projekt offline. Karte ist drauf.'], [24.6, 'kai', 'Funkloch? Egal.'],
     [27.6, 'kai', 'Grad antippen, Fotos rein, speichern. Nächste!'], [31.6, 'kai', 'Tag beenden. Aufmaß steht.'],
@@ -93,7 +93,7 @@ const CB = process.env.CHATTERBOX_PY;
 const cbDatei = (i) => { const [, wer, text, , seed] = ZEILEN[i], s = STIMME[wer];
   return join(root, '.cache', 'stimmen', 'zeilen', createHash('sha1').update([s.ref, s.ex, seed || 1, text].join('|')).digest('hex').slice(0, 16) + '.wav'); };
 if (CB) { const auftrag = join(tmp, 'auftrag.json');
-  writeFileSync(auftrag, JSON.stringify(ZEILEN.map(([, wer, text, , seed], i) => ({ ref: join(root, '.cache', 'stimmen', STIMME[wer].ref + '.wav'), text, ex: STIMME[wer].ex, seed: seed || 1, aus: cbDatei(i) }))));
+  writeFileSync(auftrag, JSON.stringify(ZEILEN.map(([, wer, text, , seed], i) => ({ ref: join(root, '.cache', 'stimmen', STIMME[wer].ref + '.wav'), text, ex: STIMME[wer].ex, seed: seed || 1, aus: cbDatei(i), max: ZEILEN[i + 1] ? ZEILEN[i + 1][0] - ZEILEN[i][0] - 0.12 : undefined }))));
   execFileSync(CB, [join(root, 'werkzeuge', 'stimme.py'), auftrag], { stdio: ['ignore', 'inherit', 'ignore'] }); }
 const SPRECHEN = [], UT = [], STIMMEN = [];
 ZEILEN.forEach(([t, wer, text, ut], i) => {

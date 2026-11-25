@@ -14,9 +14,20 @@ if auftrag:
         ohr = WhisperModel("small", device="cpu", compute_type="int8")
     except Exception:
         ohr = None
+    import difflib, re
+    norm = lambda t: re.sub(r"[^a-zäöüß0-9 ]", "", t.lower())
     for z in auftrag:
-        torch.manual_seed(z.get("seed", 1))
-        a = m.generate(z["text"], language_id="de", audio_prompt_path=z["ref"], exaggeration=z.get("ex", 0.7), cfg_weight=0.3, temperature=0.9)
-        ta.save(z["aus"], a, m.sr)
-        gehoert = " ".join(s.text.strip() for s in ohr.transcribe(z["aus"], language="de")[0]) if ohr else ""
-        print(f'   Stimme: „{z["text"]}“ {a.shape[-1] / m.sr:.2f} s  gehört: „{gehoert}“', flush=True)
+        # mehrere Anläufe: der verständlichste (gegengehört) gewinnt, zu lange (passt auch 30 % schneller nicht in die Lücke) verlieren
+        beste = None
+        for k in range(z.get("versuche", 4)):
+            torch.manual_seed(z.get("seed", 1) + 100 * k)
+            a = m.generate(z["text"], language_id="de", audio_prompt_path=z["ref"], exaggeration=z.get("ex", 0.7), cfg_weight=0.3, temperature=0.9)
+            ta.save(z["aus"] + ".tmp.wav", a, m.sr)
+            d = a.shape[-1] / m.sr
+            gehoert = " ".join(s.text.strip() for s in ohr.transcribe(z["aus"] + ".tmp.wav", language="de")[0]) if ohr else ""
+            note = difflib.SequenceMatcher(None, norm(z["text"]), norm(gehoert)).ratio() if ohr else 1
+            passt = not z.get("max") or d <= z["max"] * 1.3
+            if beste is None or note - (0 if passt else 0.4) > beste[0]: beste = (note - (0 if passt else 0.4), a, d, gehoert)
+            if note > 0.85 and passt: break
+        ta.save(z["aus"], beste[1], m.sr); os.remove(z["aus"] + ".tmp.wav")
+        print(f'   Stimme: „{z["text"]}“ {beste[2]:.2f} s  Note {beste[0]:.2f}  gehört: „{beste[3]}“', flush=True)
