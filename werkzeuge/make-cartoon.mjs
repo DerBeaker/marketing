@@ -4,6 +4,7 @@
 // Geräusche und Musik werden hier synthetisiert. Braucht Playwright (global), ffmpeg, piper + Modell in .cache/piper/.
 import { createRequire } from 'node:module';
 import { execSync, execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdtempSync, rmSync, readFileSync, writeFileSync, statSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join, dirname } from 'node:path';
@@ -24,12 +25,12 @@ const FILME = {
   schachtblick: {
     laenge: 38.5, heute: 16.8, cover: 9.0, ende: 34.05,
     bilder: { foto: 'material/schachtblick/bilder/app-foto.jpg', ki: 'material/schachtblick/bilder/app-ki.jpg', befunde: 'material/schachtblick/bilder/app-befunde.jpg' },
-    stimmen: { horst: { pitch: 0.8, tempo: 1.05 }, jule: { pitch: 1.42, tempo: 1.12 } },
+    stimmen: { horst: { pitch: 0.8, tempo: 1.05, ref: 'manuel', ex: 1.1 }, jule: { pitch: 1.42, tempo: 1.12, ref: 'frau', ex: 0.8 } },
     zeilen: [
-      [4.3, 'horst', 'So. Schacht auf.'], [6.4, 'horst', 'Zollstock, Kamera, Zettel.'], [8.9, 'horst', 'Mein Zettel! Halt!'], [11.3, 'horst', 'Na super.'],
-      [12.9, 'horst', 'Und abends alles abtippen. Juhu.'], [17.0, 'jule', 'Foto von oben.'], [19.4, 'jule', 'Tiefe per Laser.'],
-      [21.8, 'jule', 'Die K I schlägt vor. Ich prüfe. Passt!', 'Die KI schlägt vor. Ich prüfe. Passt!'], [24.4, 'jule', 'Nächster Schacht!'],
-      [29.2, 'horst', 'Häh? Schon fertig?'], [31.3, 'jule', 'Schacht für Schacht. Und Feierabend!'],
+      [4.3, 'horst', 'Vamos! Schacht auf!'], [6.4, 'horst', 'Zollstock, Kamera, Zettel. Olé!'], [8.9, 'horst', 'Ay, caramba! Mein Zettel!'], [11.3, 'horst', 'Madre mía.'],
+      [12.9, 'horst', 'Und abends alles abtippen. Fantástico.'], [17.0, 'jule', 'Foto von oben.'], [19.4, 'jule', 'Tiefe per Laser.'],
+      [21.8, 'jule', 'Die Ka-I schlägt vor. Ich prüfe. Passt!', 'Die KI schlägt vor. Ich prüfe. Passt!'], [24.4, 'jule', 'Nächster Schacht!'],
+      [29.2, 'horst', 'Qué? Schon fertig?'], [31.3, 'jule', 'Schacht für Schacht. Und Feierabend!'],
     ],
     geraeusche: (G) => { G.motor(0, 2.7); G.pop(3.35); G.klonk(4.75); [6.5, 6.8, 7.1, 7.4, 7.7].forEach((t) => G.klick(t)); G.blitz(8.05); G.wind(8.6, 1.8);
       G.plumps(10.9); G.tippen(13.0, 2.6); G.ding(15.85, 1046); G.ding(15.95, 1568); G.blitz(17.3); G.piu(19.65); G.klick(23.1); G.ding(23.25);
@@ -38,17 +39,17 @@ const FILME = {
   abscheiderblick: {
     laenge: 53.5, fps: 24, heute: 21.0, cover: 8.0, ende: 48.0,
     bilder: { dicht: 'material/screens/abscheider3d-dichtheit.jpg', zustand: gi('handy-zustand'), bemessung: gi('handy-bemessung'), bericht: gi('bericht-1'), pc: gi('pc-pruefung') },
-    stimmen: { gerd: { pitch: 0.78, tempo: 1.05 }, kai: { pitch: 1.22, tempo: 1.12 }, jule: { pitch: 1.42, tempo: 1.12 } },
+    stimmen: { gerd: { pitch: 0.78, tempo: 1.05, ref: 'manuel', ex: 1.1 }, kai: { pitch: 1.22, tempo: 1.12, ref: 'mann', ex: 0.85, cbPitch: 1.06 }, jule: { pitch: 1.42, tempo: 1.12, ref: 'frau', ex: 0.8 } },
     zeilen: [
-      [1.0, 'gerd', 'Generalinspektion. Erst mal Dichtheitsprüfung.'], [5.0, 'gerd', 'Sonde rein. Pegel ablesen. Aufschreiben.'],
+      [1.0, 'gerd', 'Vamos! Generalinspektion. Erst mal Dichtheitsprüfung.'], [5.0, 'gerd', 'Sonde rein. Pegel ablesen. Aufschreiben.'],
       [8.1, 'gerd', 'Zwei Komma vier drei eins. Oder drei vier zwei eins?', '2,431 … oder 3,421?'],
       [11.3, 'gerd', 'Jetzt noch Dach, Hof, Abläufe, Zapfsäulen. Alles merken.'], [15.0, 'gerd', 'Wie groß war das Dach?'],
-      [16.6, 'gerd', 'Und abends alles in die Tabelle.'], [18.8, 'gerd', 'Akku leer. Neeein!'],
+      [16.6, 'gerd', 'Und abends alles in die Tabelle.'], [18.8, 'gerd', 'Akku leer. Ay, caramba!'],
       [21.6, 'kai', 'Sonde rein, Pegel eintragen. Die Wasserbilanz rechnet die App.'],
       [27.0, 'kai', 'Messen, Laser, zack. Steht direkt in der Bemessung.'], [30.4, 'kai', 'Nichts merken. Kein Zettel.'],
       [33.3, 'kai', 'Bemessung mit Rechenweg. Mängel mit Frist.'], [37.3, 'kai', 'Pause? Kein Problem.'],
       [39.3, 'kai', 'Auf der Couch weitermachen. Abschließen. Fertig.'], [42.8, 'jule', 'Und das Büro hat den Bericht schon.'],
-      [45.4, 'gerd', 'Ich such noch die Dachfläche.'],
+      [45.4, 'gerd', 'Ich such noch die Dachfläche, amigos.'],
     ],
     geraeusche: (G) => { G.motor(0, 2.4); G.bremse(2.3); G.klonk(4.6); G.saugen(5.3, 0.9); G.piu(6.5); G.kritzeln(6.7, 1.0); G.pop(7.4);
       [10.9, 12.0, 13.0, 13.9, 14.8].forEach((t) => G.pop(t)); G.tippen(16.4, 2.2); [18.0, 18.2, 18.4].forEach((t) => G.piu(t)); G.posaune(19.0);
@@ -62,16 +63,16 @@ const FILME = {
 FILME.spuelblick = {
   laenge: 49.5, fps: 24, heute: 20.4, cover: 7.5, ende: 44.8,
   bilder: { liste: '/home/user/spuelblick/app/start/bilder/liste-960.webp', grad: '/home/user/spuelblick/app/start/bilder/grad-960.webp', projekte: 'material/screens/spuelblick-projekte.jpg' },
-  stimmen: { udo: { pitch: 0.8, tempo: 1.05 }, jule: { pitch: 1.42, tempo: 1.12 }, kai: { pitch: 1.22, tempo: 1.12 }, ag: { pitch: 0.95, tempo: 1.0 } },
+  stimmen: { udo: { pitch: 0.8, tempo: 1.05, ref: 'manuel', ex: 1.1 }, jule: { pitch: 1.42, tempo: 1.12, ref: 'frau', ex: 0.8 }, kai: { pitch: 1.22, tempo: 1.12, ref: 'mann', ex: 0.85, cbPitch: 1.06 }, ag: { pitch: 0.95, tempo: 1.0, ref: 'mann', ex: 0.6, cbPitch: 0.9 } },
   zeilen: [
-    [3.2, 'udo', 'Haltung zwölf. Los gehts.', 'Haltung zwölf. Los geht’s.'],
-    [6.3, 'udo', 'Haltung, Länge, D N, Verschmutzung, Gänge, Düse.', 'Haltung, Länge, DN, Verschmutzung, Gänge, Düse …'],
-    [9.85, 'udo', 'Und das für jede Haltung.'], [12.2, 'udo', 'Mist. Drei null null oder acht null null?', 'Mist. 300 oder 800?'],
+    [3.2, 'udo', 'Haltung zwölf. Vamos!'],
+    [6.3, 'udo', 'Haltung, Länge, De Enn, Verschmutzung, Gänge, Düse.', 'Haltung, Länge, DN, Verschmutzung, Gänge, Düse …'],
+    [9.85, 'udo', 'Und das für jede Haltung.'], [12.2, 'udo', 'Ay, caramba! Dreihundert oder achthundert?', 'Ay, caramba! 300 oder 800?'],
     [15.5, 'jule', 'Welche Haltung ist das? Und wo ist das Foto?'], [18.0, 'ag', 'Wie weit seid ihr denn?'],
     [22.6, 'kai', 'Projekt offline. Karte ist drauf.'], [24.6, 'kai', 'Funkloch? Egal.'],
     [27.6, 'kai', 'Grad antippen, Fotos rein, speichern. Nächste!'], [31.6, 'kai', 'Tag beenden. Aufmaß steht.'],
     [34.8, 'jule', 'Ich seh, was draußen läuft. Bericht? Ein Klick.'], [39.0, 'ag', 'Endlich seh ich selbst, wie weit ihr seid.'],
-    [42.4, 'udo', 'Gebt mir auch so ein Ding!'],
+    [42.4, 'udo', 'Gebt mir auch so ein Ding, amigos!'],
   ],
   geraeusche: (G) => { G.motor(0, 2.6); G.bremse(2.5); G.klonk(2.85); G.saugen(5.0, 0.9); G.wasser(5.8, 5.2); G.kritzeln(6.6, 3.0);
     [9.5, 9.72, 9.94, 10.16, 10.38, 10.6].forEach((t) => G.klick(t)); G.regen(11, 4); G.zisch(12.4);
@@ -86,11 +87,20 @@ const ziel = join(root, 'reels', `cartoon-${FILM}.mp4`);
 const LAENGE = CFG.laenge, ZEILEN = CFG.zeilen, STIMME = CFG.stimmen, FPS = CFG.fps || 12;
 const PIPER = process.env.PIPER_BIN || 'piper';
 const MODELL = process.env.PIPER_MODEL || join(root, '.cache', 'piper', 'de_DE-thorsten-high.onnx');
+// Stimmen: mit CHATTERBOX_PY=<venv>/bin/python spricht Chatterbox (werkzeuge/stimme.py; Stimmproben in .cache/stimmen/, je Figur `ref`, Ausdruck `ex`),
+// sonst piper (tiefer/höher gepitcht). Die Chatterbox-Zeilen werden in .cache/stimmen/zeilen/ aufbewahrt: gleicher Text = gleiche Aufnahme.
+const CB = process.env.CHATTERBOX_PY;
+const cbDatei = (i) => { const [, wer, text, , seed] = ZEILEN[i], s = STIMME[wer];
+  return join(root, '.cache', 'stimmen', 'zeilen', createHash('sha1').update([s.ref, s.ex, seed || 1, text].join('|')).digest('hex').slice(0, 16) + '.wav'); };
+if (CB) { const auftrag = join(tmp, 'auftrag.json');
+  writeFileSync(auftrag, JSON.stringify(ZEILEN.map(([, wer, text, , seed], i) => ({ ref: join(root, '.cache', 'stimmen', STIMME[wer].ref + '.wav'), text, ex: STIMME[wer].ex, seed: seed || 1, aus: cbDatei(i) }))));
+  execFileSync(CB, [join(root, 'werkzeuge', 'stimme.py'), auftrag], { stdio: ['ignore', 'inherit', 'ignore'] }); }
 const SPRECHEN = [], UT = [], STIMMEN = [];
 ZEILEN.forEach(([t, wer, text, ut], i) => {
-  const roh = join(tmp, `z${i}-roh.wav`), wav = join(tmp, `z${i}.wav`), { pitch, tempo } = STIMME[wer];
-  execFileSync(PIPER, ['-m', MODELL, '-f', roh, '--length_scale', '0.92'], { input: text.replace(/Spülblick/g, 'Spühlblick'), stdio: ['pipe', 'ignore', 'ignore'] });
-  const vertonen = (schneller) => { ff(['-i', roh, '-af', `asetrate=22050*${pitch},aresample=${SR},atempo=${(tempo * schneller / pitch).toFixed(4)},highpass=f=90,acompressor=threshold=-18dB:ratio=3,volume=2.4`, '-ac', '1', wav]); return dauer(wav); };
+  let roh = join(tmp, `z${i}-roh.wav`), { pitch, tempo } = STIMME[wer], rate = 22050; const wav = join(tmp, `z${i}.wav`);
+  if (CB) { roh = cbDatei(i); pitch = STIMME[wer].cbPitch || 1; tempo = 1; rate = 24000; }
+  else execFileSync(PIPER, ['-m', MODELL, '-f', roh, '--length_scale', '0.92'], { input: text.replace(/Spülblick/g, 'Spühlblick'), stdio: ['pipe', 'ignore', 'ignore'] });
+  const vertonen = (schneller) => { ff(['-i', roh, '-af', `silenceremove=start_periods=1:start_threshold=-45dB,areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,asetrate=${rate}*${pitch},aresample=${SR},atempo=${(tempo * schneller / pitch).toFixed(4)},highpass=f=90,acompressor=threshold=-18dB:ratio=3,volume=${CB ? 1.5 : 2.4}`, '-ac', '1', wav]); return dauer(wav); };
   let d = vertonen(1), schneller = 1;
   // piper spricht bei jedem Lauf etwas anders lang: passt ein Satz nicht vor den nächsten, wird er (höchstens 30 %) schneller gesprochen
   const naechste = ZEILEN[i + 1]?.[0];
