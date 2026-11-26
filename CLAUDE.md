@@ -10,6 +10,7 @@ Dieses Repo ist der Arbeitsort für **Instagram und Social Media** von MMSE Soft
 - **Immer direkt veröffentlichen** (Metricool `autoPublish: true`, `draft: false`), nie Entwürfe. Manuel lädt nichts selbst hoch. Die Metricool-Werkzeuge sind in `.claude/settings.json` ohne Rückfrage freigegeben.
 - **Monatslimit Metricool (Gratis-Tarif, ca. 20 Beiträge):** höchstens 18 pro Monat planen.
 - **Rhythmus:** 3 Feed-Beiträge pro Woche (Mo 18:00, Mi 18:00, Sa 10:00; davon 1 Karussell, Rest Reels) plus 1 Story pro Woche (Di/Do 18:00), nicht Schachtblick-lastig, auf Instagram keine Preise. Einzelheiten nur im Skill `mmse-instagram`.
+- **Apps immer aktuell (26.11.2026):** Manuel entwickelt die Apps laufend weiter. Vor jeder Planung die App-Repos holen (nur lesen), `NEUES-IN-DEN-APPS.md` fortschreiben (Stand je Repo, Neuerungen, verwendet) und neue Features in die Beiträge einfließen lassen; eingeplante Beiträge auf veraltete Aussagen prüfen. Einzelheiten im Skill.
 - Nichts Geheimes ins Repo (öffentlich): keine Schlüssel, Zugangsdaten, Kundendaten, Projektfotos ohne Freigabe. Pixabay-Schlüssel nur als Umgebungs-Secret `PIXABAY_KEY`, Pixabay-Rohclips nie committen.
 - **Git:** Jede Sitzung hat ihren eigenen `claude/…`-Branch. Zuerst `git fetch origin` und `main` hereinholen; committen, auf den Sitzungs-Branch pushen und **denselben Commit auf `main`** (`git push origin HEAD:main`, nur fast-forward; abgelehnt → `main` zuerst zusammenführen). Metricool und die nächste Sitzung lesen nur `main`. Kein Pull Request.
 - Was Manuel dauerhaft festlegt („merk dir“, „schreib das in die CLAUDE.md“), wird an **allen drei Stellen** gleich nachgezogen, sonst laufen sie auseinander: Arbeitsweise → diese Datei, Inhalt/Rhythmus/Look → Skill `mmse-instagram` (bzw. `schachtblick-instagram`), Ablauf der Wochenplanung → Prompt der geplanten Aufgabe (siehe unten). Chatverläufe werden nicht übernommen.
@@ -24,6 +25,7 @@ Dieses Repo ist der Arbeitsort für **Instagram und Social Media** von MMSE Soft
 | `material/` | `schachtblick/` (Demo-Schachtfotos, App-Screens), `screens/` (AbscheiderBlick, Abscheider 3D, SpülBlick), `fotos/` + `LIZENZEN.md` (nur CC0/Pixabay/eigene; auch die Pixabay-Clip-IDs), `clips/` (nur lokal, gitignored), `marken/` (MMSE-Logo, Zeichen, Profilbild), `icons.json` |
 | `reels/`, `kw44/`, `marken/` | fertige Medien (öffentlich verlinkt); `posts/` und `storys/` entstehen bei Bedarf |
 | `REDAKTIONSPLAN.md` | Plan, Strategie, Termine, was schon lief |
+| `NEUES-IN-DEN-APPS.md` | Stand der App-Repos und Vorrat neuer Features für Beiträge |
 | `UEBERGABE-APPS.md` | Aufträge an die App-Sitzungen |
 
 ## Befehle

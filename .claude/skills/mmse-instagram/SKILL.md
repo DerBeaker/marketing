@@ -7,6 +7,9 @@ description: Leitfaden für den Instagram-Account @mmse.software.moldan von MMSE
 
 Ein Account für alle Apps von MMSE Software Engineering (Manuel Moldan, Freigericht). Seit 04.11.2026 heißt er **@mmse.software.moldan** (vorher @schachtblick.app). Ziel: Fachleute aus Abwasser und Entwässerung kennen die Apps und probieren sie aus.
 
+
+> **Immer aktuell (Manuel, 26.11.2026):** Die Apps ändern sich ständig. Vor jeder Planung und vor jedem neuen Beitrag die App-Repos holen (`/home/user/Schachtinspektions-Tool`, `gi-tool`, `abscheider-3d-tool`, `spuelblick`: `git fetch`, `git merge --ff-only`, nur lesen), `NEUES-IN-DEN-APPS.md` fortschreiben und neue Features in die Beiträge einfließen lassen: pro Woche möglichst **ein Beitrag zu einer Neuerung**, Screens frisch aus dem aktuellen Stand (lokaler Demo-Server bzw. Bilder der Willkommensseiten), Fakten in den Produktzeilen unten nachziehen. Schon eingeplante Beiträge prüfen, ob Text oder Screen noch stimmen.
+
 ## Rolle dieser Sitzung (fest vereinbart)
 
 - **Nur Social Media.** Arbeitsort ist dieses Repo `DerBeaker/marketing` (öffentlich): Skills, Werkzeuge, Material, Plan, fertige Medien.
