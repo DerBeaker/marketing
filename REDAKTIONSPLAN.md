@@ -66,9 +66,13 @@ November: 15 Feed-Termine + 3 Storys (12., 19., 24.11.) = 18 (Obergrenze erreich
 | Mi 09.12. | 18:00 | Reel + Musik | SpülBlick | 22 Uhr Notdienst, Schlauch raus, rein in den Schacht → Haltung antippen, erfassen im Kanal | reel-spuelblickumtec3.mp4 | eingeplant |
 | Do 10.12. | 18:00 | Story | MMSE | Ein Account, vier Apps (Reel vom 09.11. als Story) | reel-mmseumtec.mp4 | eingeplant |
 | Sa 12.12. | 10:00 | Karussell (6) | Abscheider 3D | Dichtheitsprüfung ohne Zettelkram in 4 Schritten | posts/abscheider3d_dicht/ | eingeplant |
+| Mo 14.12. | 18:00 | Reel | SpülBlick | **Neu:** Projekt ohne ISYBAU, Excel-Liste importieren | reel-spuelblickneu | eingeplant |
+| Mi 16.12. | 18:00 | Karussell (6) | AbscheiderBlick | **Neu:** vier Berichtsdesigns, Farbschemata | posts/abscheiderblick_designs/ | eingeplant |
+| Do 17.12. | 18:00 | Story | Schachtblick | Trickfilm mit neuer Stimme (Manuel) | cartoon-schachtblick | eingeplant |
+| Sa 19.12. | 10:00 | Reel | Abscheider 3D | **Neu:** halber Konus, liegender Tank, Einbauteile | reel-abscheider3dneu | eingeplant |
 | Mo 14.12. | 18:00 | – | – | ab hier Sonntagsplanung (läuft seit 20.11. in Manuels Sitzung mit Repo-Zugriff) | – | Automatik |
 
-Dezember bis 13.12.: 7 Beiträge (5 Feed + 2 Storys). Vorgemerkt: Manuels 60-s-Video.
+Dezember bis 20.12.: 11 Beiträge (8 Feed + 3 Storys). Trickfilme SpülBlick (28.11.) und AbscheiderBlick (07.12.) am 25.11. mit neuer Stimme ausgetauscht. Vorgemerkt: Manuels 60-s-Video.
 
 ## Reels erzeugen
 

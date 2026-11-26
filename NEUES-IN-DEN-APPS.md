@@ -27,7 +27,7 @@ Nur was für Anwender sichtbar ist; keine Preise; nichts behaupten, was nicht im
 | Kalender-Abo: Termine der Generalinspektionen im eigenen Kalender (Admin, Prüfer, Kunden) | 0.14.26 | |
 | Überhöhung im Prüfbericht als Schnittzeichnung | 0.14.23 | |
 | Ersatz-Typenschild aus der Anlage heraus erstellen | 0.14.21 | |
-| Berichtsdesigns Klassisch, Modern, Kompakt, Editorial + Farbschemata; Firma wählt | 0.14.0 | |
+| Berichtsdesigns Klassisch, Modern, Kompakt, Editorial + Farbschemata; Firma wählt | 0.14.0 | 16.12. Karussell |
 | Grafiken zu den Rechnungen im Bericht, Berichtsvorlagen der Firma | 0.13.86 | |
 | Doppelanlagen (LFA und Fett), gemeinsamer Schlammfang, Überhöhung je Schlammfang | 0.14.8–10 | |
 | Einbauteile aus der 3D-Aufnahme (Prallblech, Koaleszenz, Schwimmer) als Vorschlag | 0.14.10/13 | |
@@ -40,17 +40,21 @@ Nur was für Anwender sichtbar ist; keine Preise; nichts behaupten, was nicht im
 ## Abscheider 3D
 | Neu | seit | verwendet |
 |---|---|---|
-| Halber (exzentrischer) Konus in Modell, Schnitt, Draufsicht | 12.11. | |
-| Einbauteile: Prallblech, Einlauftopf, Tauchbogen; liegender Tank | 07.11. | |
+| Halber (exzentrischer) Konus in Modell, Schnitt, Draufsicht | 12.11. | 19.12. Reel |
+| Einbauteile: Prallblech, Einlauftopf, Tauchbogen; liegender Tank | 07.11. | 19.12. Reel |
 | Doppelanlagen, Aufbau mit Einstieg, Abdeckung, Leitungen | 07.11. | |
-| Vorlagen speichern und laden | 06.11. | |
+| Vorlagen speichern und laden | 06.11. | 19.12. Reel (Caption) |
 | Maßzahlen anklickbar (Klick springt zum Eingabefeld) | 05.11. | |
 
 ## SpülBlick
 | Neu | seit | verwendet |
 |---|---|---|
-| Projekte ohne ISYBAU: nur Name und Ort, Haltungen aus dem Feld oder aus einer Liste | V 50 | |
-| Excel-Liste importieren (auch Tabelle aus PDF/Word einfügen) | V 50/51 | |
+| Projekte ohne ISYBAU: nur Name und Ort, Haltungen aus dem Feld oder aus einer Liste | V 50 | 14.12. Reel |
+| Excel-Liste importieren (auch Tabelle aus PDF/Word einfügen) | V 50/51 | 14.12. Reel |
 | Auftraggeber und Büro sehen, was bei jeder Reinigung passiert ist | V 47 | |
 | Monteur-App zuerst fürs Handy; Fotos groß ansehen | V 45/46 | |
 | „Was ist neu“ in der App | V 50 | |
+
+## Frische Screens
+
+`node werkzeuge/screens-spuelblick.mjs <ordner> <liste.csv>` (Büro, Excel-Import; Testserver des App-Repos), `node werkzeuge/screens-berichtsdesigns.mjs` (Musterbericht je Design), Abscheider 3D: `gi-tool/app/3d/index.html` über einen lokalen Webserver öffnen, Vorlage wählen, 3D-Ansicht und Schnitt fotografieren (→ `material/screens/abscheider3d-konus*.jpg`, `-liegend*.jpg`).
