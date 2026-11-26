@@ -47,6 +47,15 @@ const KARUSSELLS = {
     { foto: F + 'abscheider-hochdruck.jpg', kicker: '4 · Bericht', titel: 'Draufsicht und PDF.', text: 'Für Leichtflüssigkeits- und Fettabscheider.', geraet: 'material/screens/abscheider3d-draufsicht.jpg', art: 'tablet' },
     { ende: { zeile: 'Kostenlos.<br>Ohne Anmeldung.', unter: 'im Browser · auch offline · Daten bleiben auf dem Gerät' } },
   ] },
+  // AbscheiderBlick: Berichtsdesigns (neu ab 0.14.0; Bilder aus werkzeuge/screens-berichtsdesigns.mjs)
+  abscheiderblick_designs: { th: 'abscheiderblick', folien: [
+    { foto: F + 'tankstelle-tag.jpg', pos: '15% 50%', kicker: 'Neu in AbscheiderBlick', titel: 'Dein Bericht.<br>Dein Design.', text: 'Vier Vorlagen zur Wahl 👉', gross: true },
+    { foto: F + 'abscheider-leer.jpg', kicker: '1 · Klassisch', titel: 'Klar und ruhig.', text: 'Der bewährte Prüfbericht.', geraet: 'material/screens/abscheiderblick-design-klassisch.jpg', art: 'blatt' },
+    { foto: F + 'stativ-schacht.jpg', kicker: '2 · Modern', titel: 'Auf einen Blick.', text: 'Ergebnis groß, Daten in Karten.', geraet: 'material/screens/abscheiderblick-design-modern.jpg', art: 'blatt' },
+    { foto: F + 'schwimmer.jpg', kicker: '3 · Kompakt', titel: 'Dicht gepackt.', text: 'Viel Inhalt auf wenig Seiten.', geraet: 'material/screens/abscheiderblick-design-kompakt.jpg', art: 'blatt' },
+    { foto: F + 'abscheider-leiter.jpg', kicker: '4 · Editorial', titel: 'Mit Charakter.', text: 'Deckblatt wie aus dem Magazin.', geraet: 'material/screens/abscheiderblick-design-editorial.jpg', art: 'blatt' },
+    { ende: { zeile: 'Vier Designs.<br>Deine Farbe.', unter: 'fünf Farbschemata oder die eigene Firmenfarbe' } },
+  ] },
 };
 const NAME = process.argv[2];
 const K = KARUSSELLS[NAME]; if (!K) throw new Error(`Unbekanntes Karussell (${Object.keys(KARUSSELLS).join(', ')})`);
@@ -62,7 +71,7 @@ const CSS = `*{margin:0;box-sizing:border-box}body{width:${W}px;height:${H}px;ov
   .handy img{width:100%;display:block;border-radius:40px}
   .tablet{position:absolute;bottom:70px;left:90px;right:90px;background:#111827;border-radius:36px;padding:18px;box-shadow:0 40px 100px rgba(0,0,0,.7);transform:rotate(-2deg)}
   .tablet img{width:100%;display:block;border-radius:20px}
-  .blatt{position:absolute;bottom:-120px;right:110px;width:520px;background:#fff;padding:12px;box-shadow:0 40px 100px rgba(0,0,0,.7);transform:rotate(4deg)}.blatt img{width:100%;display:block}
+  .blatt{position:absolute;bottom:-230px;right:90px;width:660px;background:#fff;padding:12px;box-shadow:0 40px 100px rgba(0,0,0,.7);transform:rotate(4deg)}.blatt img{width:100%;display:block}
   .nr{position:absolute;bottom:40px;left:70px;font-size:30px;font-weight:700;opacity:.85}
   .ende{position:absolute;inset:0;background:radial-gradient(900px 800px at 50% 40%,${th.hg[0]},${th.hg[1]} 58%,${th.hg[2]});display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px}
   .ende .m{font-size:64px;font-weight:800}.ende .z{font-size:76px;font-weight:800;line-height:1.15;margin-top:60px}.ende .u{font-size:36px;margin-top:30px;opacity:.9}

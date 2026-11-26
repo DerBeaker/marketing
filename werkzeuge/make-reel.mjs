@@ -428,6 +428,21 @@ const REELS = {
     { clip: U + 'VID-20250506-WA0023.mp4', dauer: 3.2, opt: { start: 30, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('w5.png', 'material/screens/spuelblick-erfassen.jpg', 'Erfassen', 'Auch tief<br>im Kanal.', { art: 'tablet', breite: 980, top: 860, drehen: 2 }), ueber: 'fadeblack' },
     { bild: await endkarte('Deine Haltungen.<br>Dein Bericht.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
   ]; },
+  // ---- Neuerungen aus den Apps (NEUES-IN-DEN-APPS.md): echte Clips + frische Screens (werkzeuge/screens-*.mjs)
+  spuelblickneu: async () => { TH = THEMEN.spuelblick; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20250509-WA0011.mp4', dauer: 2.4, opt: { start: 6, zoom: 0.0009 }, text: await png('n1.png', text('Neues Projekt', 'Kein ISYBAU?')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20240724-WA0012.mp4', dauer: 2.4, opt: { start: 10, zoom: 0.0009 }, text: await png('n2.png', text('Egal.', 'Excel-Liste<br>rein.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250331-WA0029.mp4', dauer: 3.4, opt: { start: 5, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('n3.png', 'material/screens/spuelblick-excel.jpg', 'Neu in SpülBlick', 'Spalten prüfen.<br>Übernehmen.', { art: 'tablet', breite: 1000, top: 900, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250506-WA0023.mp4', dauer: 3.2, opt: { start: 30, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('n4.png', sbBild('liste-960.webp'), 'Und draußen', 'Haltung<br>antippen.', { art: 'handy', breite: 600, top: 760, drehen: 3 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Projekt angelegt.<br>In Minuten.', { unter: '14 Tage kostenlos testen', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
+  abscheider3dneu: async () => { TH = THEMEN.abscheider3d; const U = 'material/umtec/'; return [
+    { clip: U + 'VID-20250410-WA0018.mp4', dauer: 2.4, opt: { start: 2, zoom: 0.0009 }, text: await png('m1.png', text('Abscheider 3D', 'Das ist<br>neu.')), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250410-WA0019.mp4', dauer: 3.0, opt: { start: 25, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('m2.png', 'material/screens/abscheider3d-konus.jpg', 'Neu', 'Halber<br>Konus.', { art: 'tablet', breite: 860, top: 780, drehen: -2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250403-WA0000.mp4', dauer: 3.0, opt: { start: 76, zoom: 0.0005, dunkel: 0.08, weich: 2 }, text: await geraet('m3.png', 'material/screens/abscheider3d-liegend.jpg', 'Neu', 'Liegender<br>Tank.', { art: 'tablet', breite: 860, top: 780, drehen: 2 }), ueber: 'smoothleft' },
+    { clip: U + 'VID-20250403-WA0000.mp4', dauer: 3.2, opt: { start: 31, zoom: 0.0005, dunkel: 0.1, weich: 2 }, text: await geraet('m4.png', 'material/screens/abscheider3d-liegend-schnitt.jpg', 'Mit Einbauteilen', 'Prallblech.<br>Tauchrohr.', { art: 'tablet', breite: 1000, top: 940, drehen: -2 }), ueber: 'fadeblack' },
+    { bild: await endkarte('Kostenlos.<br>Ohne Anmeldung.', { unter: 'im Browser · auch offline', knopf: 'Link in der Bio' }), dauer: 3.2, zoom: 0.0005 },
+  ]; },
   // ---- Storys (9:16, ca. 9 s, ohne Ton; Link-Sticker setzt Manuel in der Instagram-App)
   storyabscheider: async () => { TH = THEMEN.abscheiderblick; const F = 'material/umtec/_reel/'; return [
     { foto: F + 'tankstelle-tag.jpg', dauer: 2.6, opt: { quer: 0.12, zoom: 0.0009 }, text: await png('sa1.png', text('Wusstest du?', 'Alle 5 Jahre<br>General-<br>inspektion.')), ueber: 'smoothleft' },
